@@ -3,7 +3,8 @@ import Navbar from "../../components/Navbar";
 import Banner from "../../components/Banner";
 import List from "../../components/List";
 import { fetchUpcomingNewRelease, fetchMovie } from "../../utils/api";
-// import './Home.css';
+import { data } from "../../components/mockData";
+import ListHover from "../../components/ListHover";
 
 function Home() {
   const [upcomingMovie, setUpComingMovie] = useState();
@@ -60,7 +61,10 @@ function Home() {
     <div className="Home">
       <Navbar />
       <Banner movieData={movieData} trailerKey={trailerKey} />
-      <List />
+      <List listGenre={"Upcoming"} listData={upcomingMovie} />
+      <List listGenre={"New Releases"} listData={newReleaseMovie} />
+      <List listGenre={"My List"} listData={data} />
+      <ListHover listData={upcomingMovie} />
     </div>
   );
 }

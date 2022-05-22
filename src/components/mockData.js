@@ -6,8 +6,7 @@ import Chucky04 from '../images/seed-of-chucky.webp'
 import Chucky13 from '../images/curse-of-chucky.jpeg'
 
 export const data = 
-[
-	{
+{results:[	{
 		"evidenceData": {
 			"type": "NONE",
 			"key": ""
@@ -128,4 +127,4 @@ export const data =
 		"rankNum": 1
 	},
 	
-]
+]}

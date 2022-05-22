@@ -1,6 +1,7 @@
+import { useState } from "react";
 import "./Banner.css";
 import infoLogo from "../images/info_circle_outline.png";
-import { useState } from "react";
+import Loading from "./loading/Loading";
 
 function Banner({ movieData, trailerKey }) {
   console.log(movieData, trailerKey);
@@ -21,7 +22,7 @@ function Banner({ movieData, trailerKey }) {
         </div>
       ) : (
         // temporary banner loading
-        <div style={{ height: "100vh", background: "black" }} />
+        <Loading />
       )}
     </>
   );

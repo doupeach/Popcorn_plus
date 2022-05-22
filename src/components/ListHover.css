@@ -1,0 +1,39 @@
+.list-hover-container {
+  width: 100%;
+  background-color: black;
+  height: 500px;
+  overflow: hidden;
+}
+
+.list-hover {
+  /* height: 500px; */
+  display: flex;
+  background-color: black;
+  overflow-x: scroll;
+}
+
+#hover-btns {
+  width: 100%;
+  display: flex;
+  margin: 0 15px;
+}
+
+#playBtn {
+  margin-left: auto;
+  margin-right: 25px;
+}
+
+#popcornBtn img {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  margin: 3px 5px;
+}
+
+#hover-card p,#hover-card h4{
+  color: white;
+  margin: 10px 20px;
+  font-size: 20px;
+}

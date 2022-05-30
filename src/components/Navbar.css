@@ -10,7 +10,7 @@
 
 #logo {
   height: 40px;
-  margin-left: 30px;
+  margin-left: 40px;
   cursor: pointer;
 }
 
@@ -28,27 +28,28 @@
 
 #navbar-btn {
   margin-left: auto;
-  margin-right: 30px;
+  margin-right: 40px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 100px;
-}
-
-#navbar-btn img {
-  cursor: pointer;
-  margin-right: 30px;
 }
 
 #fav {
   width: 30px;
   height: 30px;
   cursor: pointer;
+  margin-right: 30px;
 }
 
-#search,
 #member {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#search {
   width: 35px;
   height: 35px;
   cursor: pointer;
+  margin-right: 30px;
 }

@@ -25,7 +25,7 @@ function List({ listGenre, listData }) {
               ></img>
               <div className="card-title">{data.title}</div>
 
-              <div key={data.id} id="hover-card">
+              <div id="hover-card">
                 <div id="hover-btns">
                   <div id="plusBtn">
                     <img src={plusBtn} />
@@ -40,6 +40,7 @@ function List({ listGenre, listData }) {
                 <p>{data.title}</p>
                 <h4>{data.vote_average}</h4>
               </div>
+
             </div>
           </>
         ))}

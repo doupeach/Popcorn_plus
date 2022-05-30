@@ -2,7 +2,7 @@ import "./Navbar.css";
 import logo from "../images/Popcorn_logo.png";
 import searchLogo from "../images/search_small.png";
 import favLogo from "../images/favBtn.png"
-import memberLogo from "../images/user_circle.png";
+import memberLogo from "../images/memberLogo.png";
 
 function Navbar() {
   return (

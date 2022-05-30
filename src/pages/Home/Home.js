@@ -51,10 +51,10 @@ function Home() {
     };
   }, [movieData]);
 
-  console.log('upcomingMovie',upcomingMovie);
-  console.log('newReleaseMovie',newReleaseMovie);
-  console.log('movieData',movieData);
-  console.log('trailerKey',trailerKey);
+  console.log("upcomingMovie", upcomingMovie);
+  console.log("newReleaseMovie", newReleaseMovie);
+  console.log("movieData", movieData);
+  console.log("trailerKey", trailerKey);
 
   return (
     <div className="Home">
@@ -63,6 +63,7 @@ function Home() {
       <List listGenre={"Upcoming"} listData={upcomingMovie} />
       <List listGenre={"New Releases"} listData={newReleaseMovie} />
       <List listGenre={"My List"} listData={data} />
+      
     </div>
   );
 }

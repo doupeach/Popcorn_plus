@@ -1,4 +1,4 @@
-import Slider from "react-slick";
+import { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./List.css";
@@ -6,7 +6,19 @@ import plusBtn from "../images/plusBTN.png";
 import popcornBtn from "../images/popcornBTN.png";
 import playBtn from "../images/playBTN.png";
 
+import ModalVideo from "react-modal-video";
+import { fetchMovie } from "../utils/api";
+
 function List({ listGenre, listData }) {
+  const [isOpen, setOpen] = useState(false);
+  const [trailerKey, setTrailerKey] = useState("L61p2uyiMSo");
+
+  const handleClickPlay = (id) => {
+    setOpen(true);
+    fetchMovie(id).then((res) => {
+      setTrailerKey(res.videos.results[0]?.key || "L61p2uyiMSo");
+    });
+  };
   console.log(listData);
   return (
     <div className="list-container">
@@ -33,17 +45,23 @@ function List({ listGenre, listData }) {
                   <div id="popcornBtn">
                     <img src={popcornBtn} />
                   </div>
-                  <div id="playBtn">
+                  <div id="playBtn" onClick={() => handleClickPlay(data.id)}>
                     <img src={playBtn} />
                   </div>
                 </div>
                 <p>{data.title}</p>
                 <h4>{data.vote_average}</h4>
               </div>
-
             </div>
           </>
         ))}
+        <ModalVideo
+          channel="youtube"
+          // youtube={{ autoplay: 1, mute: 1 }}
+          isOpen={isOpen}
+          videoId={trailerKey}
+          onClose={() => setOpen(false)}
+        />
       </div>
     </div>
   );

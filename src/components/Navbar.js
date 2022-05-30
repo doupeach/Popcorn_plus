@@ -1,6 +1,7 @@
 import "./Navbar.css";
 import logo from "../images/Popcorn_logo.png";
 import searchLogo from "../images/search_small.png";
+import favLogo from "../images/favBtn.png"
 import memberLogo from "../images/user_circle.png";
 
 function Navbar() {
@@ -16,6 +17,7 @@ function Navbar() {
       </div>
       <div id="navbar-btn">
         <img id="search" src={searchLogo}></img>
+        <img id="fav" src={favLogo}></img>
         <img id="member" src={memberLogo}></img>
       </div>
     </div>

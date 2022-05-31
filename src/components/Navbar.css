@@ -53,3 +53,8 @@
   cursor: pointer;
   margin-right: 30px;
 }
+
+a, a:visited {
+  text-decoration: none;
+  color: white;
+}

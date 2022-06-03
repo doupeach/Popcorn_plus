@@ -54,7 +54,64 @@
   margin-right: 30px;
 }
 
-a, a:visited {
+a,
+a:visited {
   text-decoration: none;
   color: white;
+}
+
+.search-box {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid white;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  font-size: 18px;
+  color: white;
+  background: none;
+}
+
+.search-button {
+  text-align: center;
+  height: 51px;
+  width: 40px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid white;
+  border-right: none;
+  background: none;
+  font-size: 20px;
+}
+
+.delete-button {
+  background: none;
+  outline: none;
+  border: 1px solid white;
+  border-left: none;
+}
+
+#delete-img-logo {
+  width: 20px;
+  height: 20px;
+}
+
+.search-container {
+  width: 25%;
+  position: absolute;
+  right: 15%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+#clear-input {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
 }

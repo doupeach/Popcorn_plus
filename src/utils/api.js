@@ -19,3 +19,11 @@ export async function fetchUpcomingNewRelease() {
     const json = await response.json();
     return json;
   }
+// 搜尋電影的API\
+  export async function fetchSearch(query) {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=1&include_adult=false`
+    );
+    const json = await response.json();
+    return json;
+  }

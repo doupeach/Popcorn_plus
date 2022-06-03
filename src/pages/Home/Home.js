@@ -51,10 +51,10 @@ function Home() {
     };
   }, [movieData]);
 
-  console.log("upcomingMovie", upcomingMovie);
-  console.log("newReleaseMovie", newReleaseMovie);
-  console.log("movieData", movieData);
-  console.log("trailerKey", trailerKey);
+  // console.log("upcomingMovie", upcomingMovie);
+  // console.log("newReleaseMovie", newReleaseMovie);
+  // console.log("movieData", movieData);
+  // console.log("trailerKey", trailerKey);
 
   return (
     <div className="Home">

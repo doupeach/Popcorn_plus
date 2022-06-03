@@ -4,7 +4,7 @@ import infoLogo from "../images/info_circle_outline.png";
 import Loading from "./loading/Loading";
 
 function Banner({ movieData, trailerKey }) {
-  console.log(movieData, trailerKey);
+  // console.log(movieData, trailerKey);
   return (
     <>
       {movieData ? (

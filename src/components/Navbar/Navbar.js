@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./Navbar.css";
-import logo from "../images/Popcorn_logo.png";
-import searchLogo from "../images/search_small.png";
-import favLogo from "../images/favBtn.png";
-import deleteLogo from "../images/deleteBtn.png";
-import memberLogo from "../images/memberLogo.png";
+import logo from "../../images/Popcorn_logo.png";
+import searchLogo from "../../images/search_small.png";
+import favLogo from "../../images/favBtn.png";
+import deleteLogo from "../../images/deleteBtn.png";
+import memberLogo from "../../images/memberLogo.png";
 import { Link, useHistory } from "react-router-dom";
-import { fetchSearch } from "../utils/api";
+import { fetchSearch } from "../../utils/api";
 
 function Navbar() {
   const [searchDisplay, setSearchDisplay] = useState(false);
@@ -33,9 +33,9 @@ function Navbar() {
     if (e.key === "Enter") {
       setSearchInputValue(e.target.value);
       // history.push(`/search/${searchValue}`);
-      fetchSearch(searchInputValue).then(res=>
-        {console.log(res.results)}
-      )
+      fetchSearch(searchInputValue).then((res) => {
+        console.log(res.results);
+      });
     }
   }
 
@@ -47,7 +47,13 @@ function Navbar() {
   return (
     <div className="navbar">
       <div id="logo-wrap">
-        <img id="logo" src={logo} />
+        <img
+          id="logo"
+          src={logo}
+          onClick={() => {
+            history.push("/");
+          }}
+        />
       </div>
       <div id="navbar-link">
         <Link to="/">

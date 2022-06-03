@@ -2,12 +2,12 @@ import { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./List.css";
-import plusBtn from "../images/plusBTN.png";
-import popcornBtn from "../images/popcornBTN.png";
-import playBtn from "../images/playBTN.png";
+import plusBtn from "../../images/plusBTN.png";
+import popcornBtn from "../../images/popcornBTN.png";
+import playBtn from "../../images/playBTN.png";
 
 import ModalVideo from "react-modal-video";
-import { fetchMovie } from "../utils/api";
+import { fetchMovie } from '../../utils/api';
 
 function List({ listGenre, listData }) {
   const [isOpen, setOpen] = useState(false);

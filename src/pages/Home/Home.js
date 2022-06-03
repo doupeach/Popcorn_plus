@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar";
-import Banner from "../../components/Banner";
-import List from "../../components/List";
+import Banner from "../../components/Banner/Banner";
+import List from "../../components/List/List";
 import { fetchUpcomingNewRelease, fetchMovie } from "../../utils/api";
 import { data } from "../../components/mockData";
 
@@ -58,12 +57,10 @@ function Home() {
 
   return (
     <div className="Home">
-      <Navbar />
       <Banner movieData={movieData} trailerKey={trailerKey} />
       <List listGenre={"Upcoming"} listData={upcomingMovie} />
       <List listGenre={"New Releases"} listData={newReleaseMovie} />
       <List listGenre={"My List"} listData={data} />
-      
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Banner.css";
-import infoLogo from "../images/info_circle_outline.png";
-import Loading from "./loading/Loading";
+import infoLogo from "../../images/info_circle_outline.png";
+import Loading from "../Loading/Loading"
 
 function Banner({ movieData, trailerKey }) {
   // console.log(movieData, trailerKey);

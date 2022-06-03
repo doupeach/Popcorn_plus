@@ -2,15 +2,18 @@ import Home from "./pages/Home/Home";
 import "./base.css";
 import "./App.css";
 import "../node_modules/react-modal-video/scss/modal-video.scss";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Member from "./pages/Member/Member";
 import MyList from "./pages/MyList/MyList";
 import Search from "./pages/Search/Search";
+import ScrollToTop from "./components/ScrollToTop";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <BrowserRouter>
+      <ScrollToTop>
+        <Navbar />
         <Switch>
           <Route path="/" exact>
             <Home />
@@ -25,8 +28,8 @@ function App() {
             <Search />
           </Route>
         </Switch>
-      </header>
-    </div>
+      </ScrollToTop>
+    </BrowserRouter>
   );
 }
 

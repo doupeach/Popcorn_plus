@@ -60,7 +60,7 @@ function Navbar() {
           <div>Home</div>
         </Link>
 
-        <div>New & Popular</div>
+        <div onClick={()=>window.scrollTo(0, 630)}>New Releases</div>
 
         <Link to="/mylist">
           <div>My List</div>

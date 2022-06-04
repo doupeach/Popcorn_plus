@@ -47,7 +47,7 @@ function BannerHoverCard({ movieData, trailerKey }) {
           <h4>Cast</h4>
           {castInfo?.cast.slice(0, 5).map((member) => {
             return <h5 key={member.name}>{member.name}</h5>;
-          })}<h5>...more</h5>
+          })}
               
         </div>
       </div>

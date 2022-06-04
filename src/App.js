@@ -8,6 +8,8 @@ import MyList from "./pages/MyList/MyList";
 import Search from "./pages/Search/Search";
 import ScrollToTop from "./components/ScrollToTop";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import MovieInfos from "./pages/MovieInfos/MovieInfos";
 
 function App() {
   return (
@@ -27,7 +29,11 @@ function App() {
           <Route path="/search">
             <Search />
           </Route>
+          <Route exact path="/movie/:id">
+            <MovieInfos/>
+          </Route>
         </Switch>
+        <Footer/>
       </ScrollToTop>
     </BrowserRouter>
   );

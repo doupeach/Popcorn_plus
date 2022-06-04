@@ -5,7 +5,8 @@ import popcornBtn from "../../images/popcornBTN.png";
 import playBtn from "../../images/playBTN.png";
 
 import ModalVideo from "react-modal-video";
-import { fetchMovie } from '../../utils/api';
+import { fetchMovie } from "../../utils/api";
+import { Link } from "react-router-dom";
 
 function List({ listGenre, listData }) {
   const [isOpen, setOpen] = useState(false);
@@ -25,14 +26,17 @@ function List({ listGenre, listData }) {
         {listData?.results.map((data) => (
           <>
             <div key={data.id} id="card">
-              <img
-                id="card-img"
-                src={
-                  data.image
-                    ? data.image
-                    : `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
-                }
-              ></img>
+              <Link to={`/movie/${data.id}`}>
+                <img
+                  id="card-img"
+                  src={
+                    data.image
+                      ? data.image
+                      : `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
+                  }
+                />
+              </Link>
+
               <div className="card-title">{data.title}</div>
 
               <div id="hover-card">
@@ -47,7 +51,10 @@ function List({ listGenre, listData }) {
                     <img src={playBtn} />
                   </div>
                 </div>
-                <p>{data.title}</p>
+                <Link to={`/movie/${data.id}`}>
+                  <p>{data.title}</p>
+                </Link>
+
                 <h4>{data.vote_average}</h4>
               </div>
             </div>

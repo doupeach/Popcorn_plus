@@ -32,18 +32,11 @@ function Navbar() {
   function keyPressSearch(e) {
     if (e.key === "Enter") {
       setSearchInputValue(e.target.value);
-      // history.push(`/search/${searchValue}`);
-      fetchSearch(searchInputValue).then((res) => {
-        console.log(res.results);
-      });
+      history.push(`/search/${searchInputValue}`);
     }
   }
 
-  // function resetInput(e) {
-  //   setSearchInputValue("");
-  // }
-
-  console.log(searchInputValue);
+  // console.log(searchInputValue);
   return (
     <div className="navbar">
       <div id="logo-wrap">

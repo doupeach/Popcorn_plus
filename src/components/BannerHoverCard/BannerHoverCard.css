@@ -1,0 +1,89 @@
+#banner-hover-card {
+  width: 50vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: rgb(22, 21, 21);
+  border-radius: 10px;
+}
+
+#info-card-hover-btns {
+  display: flex;
+  align-items: center;
+  margin: 10px 15px 5px 25px;
+}
+
+#info-card-plusBtn img,
+#info-card-playBtn img {
+  width: 39px;
+  height: 39px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#info-card-popcornBtn img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+#info-card-playBtn {
+  margin-left: auto;
+}
+
+#banner-hover-card h4 {
+  color: white;
+  font-size: 18px;
+  margin: 10px 10px;
+}
+
+#banner-info-card-img {
+  cursor: pointer;
+  display: block;
+  border-radius: 5px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.infos {
+  display: flex;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.info-left {
+  width: 70%;
+  margin-left:5%;
+}
+
+.casts {
+  margin: 0px 10px 5px;
+  margin-left: 10%;
+  color: white;
+  font-size: 16px;
+  width: 30%;
+  display: flex;
+  flex-direction: column  ;
+  flex-wrap: wrap;
+}
+
+#banner-hover-card h5 {
+  margin-left:10px;
+  line-height: 20px;
+}
+
+.storyline {
+  margin: 15px 10px 5px;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+  line-height: 20px;
+}
+
+#info-card-title {
+  font-size: 26px;
+  color: white;
+  margin: 15px 25px;
+  overflow: scroll;
+}

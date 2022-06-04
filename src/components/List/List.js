@@ -1,6 +1,4 @@
 import { useState } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "./List.css";
 import plusBtn from "../../images/plusBTN.png";
 import popcornBtn from "../../images/popcornBTN.png";
@@ -57,7 +55,6 @@ function List({ listGenre, listData }) {
         ))}
         <ModalVideo
           channel="youtube"
-          // youtube={{ autoplay: 1, mute: 1 }}
           isOpen={isOpen}
           videoId={trailerKey}
           onClose={() => setOpen(false)}

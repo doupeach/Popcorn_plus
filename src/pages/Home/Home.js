@@ -4,6 +4,7 @@ import List from "../../components/List/List";
 import { fetchUpcomingNewRelease, fetchMovie } from "../../utils/api";
 import { data } from "../../components/mockData";
 
+
 function Home() {
   const [upcomingMovie, setUpComingMovie] = useState();
   const [newReleaseMovie, setNewReleaseMovie] = useState();

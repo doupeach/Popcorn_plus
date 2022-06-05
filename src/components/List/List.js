@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./List.css";
 import plusBtn from "../../images/plusBTN.png";
 import popcornBtn from "../../images/popcornBTN.png";
@@ -8,9 +8,10 @@ import ModalVideo from "react-modal-video";
 import { fetchMovie } from "../../utils/api";
 import { Link } from "react-router-dom";
 
-function List({ listGenre, listData }) {
+function List({ listGenre, listData, collectionInfo }) {
   const [isOpen, setOpen] = useState(false);
   const [trailerKey, setTrailerKey] = useState("L61p2uyiMSo");
+  const [dataArr, setDataArr] = useState();
 
   const handleClickPlay = (id) => {
     setOpen(true);
@@ -18,12 +19,21 @@ function List({ listGenre, listData }) {
       setTrailerKey(res.videos.results[0]?.key || "L61p2uyiMSo");
     });
   };
+
   console.log(listData);
+  console.log(collectionInfo);
+
+  useEffect(() => {
+    collectionInfo
+      ? setDataArr(collectionInfo)
+      : listData && setDataArr(listData?.results);
+  }, [collectionInfo,listData]);
+
   return (
     <div className="list-container">
       <div id="list-name">{listGenre}</div>
       <div className="list">
-        {listData?.results.map((data) => (
+        {dataArr?.map((data) => (
           <>
             <div key={data.id} id="card">
               <Link to={`/movie/${data.id}`}>

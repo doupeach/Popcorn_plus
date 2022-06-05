@@ -13,7 +13,8 @@ import Footer from "./components/Footer/Footer";
 import MovieInfos from "./pages/MovieInfos/MovieInfos";
 import SearchResult from "./pages/SearchResult/SearchResult";
 import firebase from "./utils/firebase";
-import {fetchMultiMovies} from './utils/api'
+import {fetchCollectionMovies} from './utils/api'
+
 
 function App() {
   
@@ -22,10 +23,12 @@ function App() {
   const userRef = db.collection("users");
   const [uid, setUid] = useState(); //儲存uid，要改成redux
   const [user, setUser] = useState(); //儲存uid，要改成redux
+  const [currentUserInfo, setCurrentUserInfo] = useState(); //儲存uid，要改成redux
+  const [collectionInfo, setCollectionInfo] = useState();
+
   const [userList, setUserList] = useState([]); // 所有user的資料
-  const [myCalendarMovies, setMyCalendarMovies] = useState([]); // user_calendar底下所有電影
-  const [calendarMoviesInfo, setCalendarMovieInfo] = useState([]); // 根據user_calendar打TMDB回來的電影資料
   const [isLogin, setIsLogin] = useState()
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // 取得使用者資料為非同步
@@ -56,31 +59,57 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    uid &&
+      userRef.doc(uid).onSnapshot((doc) => {
+        setCurrentUserInfo(doc.data());
+      });
+  }, [uid]);
+
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      currentUserInfo &&
+        fetchCollectionMovies(currentUserInfo.my_list).then(
+          (movieInfo) => {
+            setCollectionInfo(movieInfo);
+            setIsLoading(false)
+          }
+        );
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [currentUserInfo]);
+
   console.log(uid)
   console.log(user)
+  console.log(userList)
+  console.log(currentUserInfo)
+  console.log(collectionInfo)
 
   return (
     <BrowserRouter>
       <ScrollToTop>
-        <Navbar />
+        <Navbar user={user} />
         <Switch>
           <Route path="/" exact>
-            <Home />
+            <Home uid={uid} collectionInfo={collectionInfo}/>
           </Route>
           <Route path="/login" exact>
             {user !== null ? <Redirect to="/member" /> : <Login />}
           </Route>
 
-          <Route path="/member">
+          <Route path="/member" exact>
           {user !== null ? <Member uid={uid} /> : <Redirect to="/login" />}
           </Route>
 
-          <Route path="/mylist">
-            <MyList />
+          <Route path="/mylist" exact>
+            {user !== null ? <MyList currentUserInfo={currentUserInfo}/> : <Redirect to='/login' />}
           </Route>
 
           <Route exact path="/movie/:id">
-            <MovieInfos />
+            <MovieInfos uid={uid}/>
           </Route>
           <Route exact path="/search/:query">
             <SearchResult />

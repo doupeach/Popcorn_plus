@@ -5,8 +5,10 @@ import playBtn from "../../images/playBTN.png";
 import ModalVideo from "react-modal-video";
 import "./BannerHoverCard.css";
 import { fetchCast } from "../../utils/api";
+import AddToCollection from "../AddToCollection/AddToCollection";
+import AddToList from "../AddToList/AddToList";
 
-function BannerHoverCard({ movieData, trailerKey }) {
+function BannerHoverCard({ movieData, trailerKey, uid }) {
   const [isOpen, setOpen] = useState(false);
   const [castInfo, setCastInfo] = useState();
 
@@ -28,10 +30,10 @@ function BannerHoverCard({ movieData, trailerKey }) {
       ></img>
       <div id="info-card-hover-btns">
         <div id="info-card-plusBtn">
-          <img src={plusBtn} />
+          <AddToList uid={uid} movieId={parseInt(movieData.id, 10)} />
         </div>
         <div id="info-card-popcornBtn">
-          <img src={popcornBtn} />
+          <AddToCollection uid={uid} movieId={parseInt(movieData.id, 10)} />
         </div>
         <div id="info-card-playBtn" onClick={() => setOpen(true)}>
           <img src={playBtn} />
@@ -48,7 +50,6 @@ function BannerHoverCard({ movieData, trailerKey }) {
           {castInfo?.cast.slice(0, 5).map((member) => {
             return <h5 key={member.name}>{member.name}</h5>;
           })}
-              
         </div>
       </div>
 

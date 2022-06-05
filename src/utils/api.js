@@ -57,3 +57,18 @@ export async function fetchUpcomingNewRelease() {
     });
     return result;
   }
+
+  export async function fetchCollectionMovies(movieArr) {
+    let movieIdArr = [];
+    movieArr.forEach((movie) => {
+      movieIdArr.push(
+        fetch(
+          `https://api.themoviedb.org/3/movie/${movie}?api_key=${apiKey}&language=en-US&append_to_response=videos`
+        )
+      );
+    });
+    let result = await Promise.all(movieIdArr).then((res) => {
+      return Promise.all(res.map(async (data) => await data.json()));
+    });
+    return result;
+  }

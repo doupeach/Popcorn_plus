@@ -6,9 +6,10 @@ import favLogo from "../../images/favBtn.png";
 import deleteLogo from "../../images/deleteBtn.png";
 import memberLogo from "../../images/memberLogo.png";
 import { Link, useHistory } from "react-router-dom";
+import AddToCollection from "../AddToCollection/AddToCollection";
 import { fetchSearch } from "../../utils/api";
 
-function Navbar() {
+function Navbar({user}) {
   const [searchDisplay, setSearchDisplay] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
   const history = useHistory();
@@ -60,9 +61,10 @@ function Navbar() {
 
         <div onClick={toNewRelease}>New Releases</div>
 
-        <Link to="/mylist">
+        {user !== null ? <Link to="/mylist" >
           <div>My List</div>
-        </Link>
+        </Link> : '' }
+
       </div>
       <div id="navbar-btn">
         {searchDisplay ? (

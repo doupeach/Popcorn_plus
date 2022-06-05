@@ -3,6 +3,7 @@ import "./SearchResult.css";
 import { Link, useParams } from "react-router-dom";
 import { fetchSearch } from "../../utils/api";
 import noCastPhoto from "../../images/cast-default-photo.png";
+import Loading from "../../components/Loading/Loading";
 
 function SearchResult() {
   const { query } = useParams();
@@ -48,7 +49,7 @@ function SearchResult() {
           </div>
         </div>
       ) : (
-        ""
+        <Loading />
       )}
     </>
   );

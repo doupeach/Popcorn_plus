@@ -4,8 +4,7 @@ import List from "../../components/List/List";
 import { fetchUpcomingNewRelease, fetchMovie } from "../../utils/api";
 import { data } from "../../components/mockData";
 
-
-function Home() {
+function Home({ uid, collectionInfo }) {
   const [upcomingMovie, setUpComingMovie] = useState();
   const [newReleaseMovie, setNewReleaseMovie] = useState();
   const [movieData, setMovieData] = useState();
@@ -58,10 +57,14 @@ function Home() {
 
   return (
     <div className="Home">
-      <Banner movieData={movieData} trailerKey={trailerKey} />
+      <Banner movieData={movieData} trailerKey={trailerKey} uid={uid} />
       <List listGenre={"Upcoming"} listData={upcomingMovie} />
       <List listGenre={"New Releases"} listData={newReleaseMovie} />
-      <List listGenre={"My List"} listData={data} />
+      {uid ? (
+        <List listGenre={"My List"} collectionInfo={collectionInfo} />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

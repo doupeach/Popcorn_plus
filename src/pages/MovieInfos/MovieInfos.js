@@ -7,8 +7,10 @@ import noCastPhoto from "../../images/cast-default-photo.png";
 import ModalVideo from "react-modal-video";
 import { fetchMovie, fetchCast } from "../../utils/api";
 import { useParams, useHistory } from "react-router-dom";
+import AddToList from "../../components/AddToList/AddToList";
+import AddToCollection from "../../components/AddToCollection/AddToCollection";
 
-function MovieInfos() {
+function MovieInfos({uid}) {
   const { id } = useParams();
   const [movieDetail, setMovieDetail] = useState();
   const [castInfo, setCastInfo] = useState();
@@ -80,8 +82,10 @@ function MovieInfos() {
                   <img id="detail-playBtn" src={playBtn} alt="" />
                   TRAILER
                 </div>
-                <img id="detail-plusBtn" src={plusBtn} alt="" />
-                <img id="detail-popcornBtn" src={popcornBtn} alt="" />
+                <AddToList uid={uid} movieId={parseInt(movieDetail.id, 10)}/>
+                {/* <img id="detail-plusBtn" src={plusBtn} alt="" /> */}
+                <AddToCollection uid={uid} movieId={parseInt(movieDetail.id, 10)}/>
+                {/* <img id="detail-popcornBtn" src={popcornBtn} alt="" /> */}
               </div>
               <div className="movie-story">{movieDetail.overview}</div>
             </div>

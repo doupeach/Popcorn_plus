@@ -21,8 +21,8 @@ const Signin = ({ toggle, handleOnClick }) => {
   const userRef = db.collection("users");
   const [activeItem, setActiveItem] = useState(true); //true = Login、false = Sign Up
   const [displayName, setDisplayName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@email.com");
+  const [password, setPassword] = useState("test123");
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,7 +42,7 @@ const Signin = ({ toggle, handleOnClick }) => {
             name: user.displayName || "user",
             photoUrl:
               user.photoUrl ||
-              'https://firebasestorage.googleapis.com/v0/b/popcorn-plus.appspot.com/o/NFT-CAT.png?alt=media&token=752f151d-026e-451b-a61f-b9ff78180767',
+              "https://firebasestorage.googleapis.com/v0/b/popcorn-plus.appspot.com/o/NFT-CAT.png?alt=media&token=752f151d-026e-451b-a61f-b9ff78180767",
             my_list: [],
             user_collection: [],
           })
@@ -82,7 +82,13 @@ const Signin = ({ toggle, handleOnClick }) => {
           user_collection: [],
         });
         setIsLoading(false);
-        Swal.fire("Awesome!", "You've created an account!", "success");
+        Swal.fire({
+          title: "Awesome!",
+          text: "You've created an account!",
+          type: "success",
+          background:
+            "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
+        });
         history.push("/");
       })
       .catch((error) => {
@@ -108,7 +114,13 @@ const Signin = ({ toggle, handleOnClick }) => {
     signInWithEmailPassword(email, password)
       .then(() => {
         setIsLoading(false);
-        Swal.fire("Hello!", "You've logged in!", "success");
+        Swal.fire({
+          title: "Hello!",
+          text: "You've logged in!",
+          type: "success",
+          background:
+            "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
+        });
         history.push("/");
       })
       .catch((error) => {
@@ -152,8 +164,12 @@ const Signin = ({ toggle, handleOnClick }) => {
           onChange={(e) => setPassword(e.target.value)}
           onFocus={() => setErrorMessage("")}
         />
-        <SubmitButton onClick={(e) => onSignIn(e)}>Sign In</SubmitButton>
-        <SignupButton onClick={(e) => onSignUp(e)}>Sign Up</SignupButton>
+        <SubmitButton color={"rgba(220,0,0,.7)"} onClick={(e) => onSignIn(e)}>
+          Sign In
+        </SubmitButton>
+        <SignupButton color={"rgba(220,0,0,.7)"} onClick={(e) => onSignUp(e)}>
+          Sign Up
+        </SignupButton>
         {errorMessage && <h5>{errorMessage}</h5>}
         {isLoading ? (
           <ReactLoading color="#FBD850" type="spinningBubbles" />

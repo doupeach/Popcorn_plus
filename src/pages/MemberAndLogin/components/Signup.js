@@ -85,7 +85,13 @@ const Signup = ({ toggle }) => {
           user_collection: [],
         });
         setIsLoading(false);
-        Swal.fire("Awesome!", "You've created an account!", "success");
+        Swal.fire({
+          title: "Awesome!",
+          text: "You've created an account!",
+          type: "success",
+          background:
+            "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
+        });
         history.push("/");
       })
       .catch((error) => {
@@ -135,7 +141,7 @@ const Signup = ({ toggle }) => {
           onChange={(e) => setPassword(e.target.value)}
           onFocus={() => setErrorMessage("")}
         />
-        <SubmitButton color={"#ff0000"} onClick={(e) => onSignUp(e)}>
+        <SubmitButton color={"rgba(220,0,0,.7)"} onClick={(e) => onSignUp(e)}>
           Sign Up
         </SubmitButton>
         {errorMessage && <h5>{errorMessage}</h5>}

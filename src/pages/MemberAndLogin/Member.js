@@ -13,8 +13,9 @@ import {
 } from "../MemberAndLogin/components/SubElements";
 import { userLogout, getUserPhotoRef } from "../../utils/firebaseActions";
 import favLogo from "../../images/favBtn.png";
+import Loading from "../../components/Loading/Loading";
 
-function Member({uid}) {
+function Member({ uid }) {
   const db = firebase.firestore();
   const userRef = db.collection("users");
 
@@ -23,8 +24,7 @@ function Member({uid}) {
   const [file, setFile] = useState(null);
 
   const history = useHistory();
-  const defaultUserPhotoUrl =
-    "https://firebasestorage.googleapis.com/v0/b/popcorn-plus.appspot.com/o/default-profile-photo.png?alt=media&token=5722bb5f-1789-4305-8d43-afcd89a0437c";
+  const defaultUserPhotoUrl = `https://firebasestorage.googleapis.com/v0/b/popcorn-plus.appspot.com/o/NFT-CAT.png?alt=media&token=752f151d-026e-451b-a61f-b9ff78180767`;
 
   // 對currentUser的doc作監聽
   useEffect(() => {
@@ -41,10 +41,10 @@ function Member({uid}) {
   const previewUrl = () => {
     if (file) {
       return URL.createObjectURL(file);
-    } else if (currentUser.photoURL !== null) {
-      return currentUser.photoURL;
+    } else if (currentUser.photoUrl !== null) {
+      return currentUser.photoUrl;
     } else {
-      return "defaultUserPhotoUrl";
+      return defaultUserPhotoUrl;
     }
   };
 
@@ -63,9 +63,10 @@ function Member({uid}) {
     };
     fileRef.put(file, metadata).then(() => {
       fileRef.getDownloadURL().then((imageUrl) => {
-        currentUser
-          .updateProfile({
-            photoURL: imageUrl,
+        userRef
+          .doc(uid)
+          .update({
+            photoUrl: imageUrl,
           })
           .then(() => {
             setIsLoading(false);
@@ -75,10 +76,10 @@ function Member({uid}) {
     });
   }
 
-  console.log(currentUser)
+  console.log(currentUser);
   return (
     <>
-      {currentUser && (
+      {currentUser ? (
         <MemberDiv>
           <ProfileCardDiv flexDirection={"column"}>
             <ProfileImgWrap width={"200px"}>
@@ -119,12 +120,18 @@ function Member({uid}) {
               Welcome Back!
             </HeaderH1>
 
-            <HeaderH2 fontSize={'1.5rem'} color={'#fff'} margin={"5px auto 1%;"}>Hello, {currentUser.name} !</HeaderH2>
+            <HeaderH2
+              fontSize={"1.5rem"}
+              color={"#fff"}
+              margin={"5px auto 1%;"}
+            >
+              Hello, {currentUser.name} !
+            </HeaderH2>
 
             <CardBtnDiv justifyContent={"center"}>
               <MemberPageButton backgroundColor={"#ff0000"}>
                 <Link to="/myfavs">
-                  <img src={favLogo} style={{'width':'35px'}}/>
+                  <img src={favLogo} style={{ width: "35px" }} />
                 </Link>
               </MemberPageButton>
               <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
@@ -140,14 +147,24 @@ function Member({uid}) {
               </HeaderH2>
             </CardBtnDiv>
           </ProfileCardDiv>
-          <LogoutButton color={'transparent'} style={{borderColor:"#fff"}} onClick={toLogOut}>Logout</LogoutButton>
+          <LogoutButton
+            color={"transparent"}
+            style={{ borderColor: "#fff" }}
+            onClick={toLogOut}
+          >
+            Logout
+          </LogoutButton>
 
           {isLoading ? (
-            <ReactLoading color="#FBD850" type="spinningBubbles" />
+            <ReactLoading color="#Ff0000" type="spinningBubbles" />
           ) : (
             <></>
           )}
         </MemberDiv>
+      ) : (
+        <div style={{ marginTop:'-102px'}}>
+        <Loading />
+        </div>
       )}
     </>
   );
@@ -167,7 +184,7 @@ const MemberDiv = styled.div`
   background-size: cover;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
-  
+
   padding: 1rem;
   box-sizing: border-box;
   width: 100%;
@@ -179,7 +196,7 @@ const MemberDiv = styled.div`
   transform: ${(props) =>
     props.active ? ` translateX(50%)` : `translateX(0)`};
 
-  margin:70px auto 0;
+  margin: 70px auto 0;
   display: flex;
   justify-content: center;
   align-items: center;

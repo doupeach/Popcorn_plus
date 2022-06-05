@@ -43,9 +43,9 @@ const Signup = ({ toggle }) => {
             uid: user.uid,
             email: user.email,
             name: user.displayName || "user",
-            photoURL:
-              user.photoURL ||
-              "https://firebasestorage.googleapis.com/v0/b/popcorn-plus.appspot.com/o/default-profile-photo.png?alt=media&token=5722bb5f-1789-4305-8d43-afcd89a0437c",
+            photoUrl:
+              user.photoUrl ||
+              "https://firebasestorage.googleapis.com/v0/b/popcorn-plus.appspot.com/o/NFT-CAT.png?alt=media&token=752f151d-026e-451b-a61f-b9ff78180767",
             my_list: [],
             user_collection: [],
           })
@@ -78,9 +78,9 @@ const Signup = ({ toggle }) => {
           uid: user.uid,
           email: user.email,
           name: displayName || "user",
-          photoURL:
-            user.photoURL ||
-            "https://firebasestorage.googleapis.com/v0/b/popcorn-plus.appspot.com/o/default-profile-photo.png?alt=media&token=5722bb5f-1789-4305-8d43-afcd89a0437c",
+          photoUrl:
+            user.photoUrl ||
+            "https://firebasestorage.googleapis.com/v0/b/popcorn-plus.appspot.com/o/NFT-CAT.png?alt=media&token=752f151d-026e-451b-a61f-b9ff78180767",
           my_list: [],
           user_collection: [],
         });

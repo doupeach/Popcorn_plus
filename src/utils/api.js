@@ -36,3 +36,24 @@ export async function fetchUpcomingNewRelease() {
     const json = await response.json();
     return json;
   }
+
+  export async function fetchMultiMovies(movieArr) {
+  
+    const set = new Set();
+    const filterResult = movieArr.filter((movie) =>
+      !set.has(movie.movie_id) ? set.add(movie.movie_id) : false
+    );
+  
+    let movieIdArr = [];
+    filterResult.forEach((movie) => {
+      movieIdArr.push(
+        fetch(
+          `https://api.themoviedb.org/3/movie/${movie.movie_id}?api_key=${apiKey}&language=en-US&append_to_response=videos`
+        )
+      );
+    });
+    let result = await Promise.all(movieIdArr).then((res) => {
+      return Promise.all(res.map(async (data) => await data.json()));
+    });
+    return result;
+  }

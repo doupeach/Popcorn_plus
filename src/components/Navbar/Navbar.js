@@ -36,6 +36,11 @@ function Navbar() {
     }
   }
 
+  function toNewRelease() {
+      // history.push('/');
+      window.scrollTo(0, 630)
+  }
+
   // console.log(searchInputValue);
   return (
     <div className="navbar">
@@ -53,7 +58,7 @@ function Navbar() {
           <div>Home</div>
         </Link>
 
-        <div onClick={()=>window.scrollTo(0, 630)}>New Releases</div>
+        <div onClick={toNewRelease}>New Releases</div>
 
         <Link to="/mylist">
           <div>My List</div>
@@ -101,7 +106,7 @@ function Navbar() {
           <img id="search" src={searchLogo} onClick={handleSearchDisplay} />
         )}
         <img id="fav" src={favLogo} />
-        <Link to="/member">
+        <Link to="/login">
           <img id="member" src={memberLogo} />
         </Link>
       </div>

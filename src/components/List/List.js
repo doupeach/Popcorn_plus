@@ -18,7 +18,7 @@ function List({ listGenre, listData }) {
       setTrailerKey(res.videos.results[0]?.key || "L61p2uyiMSo");
     });
   };
-  // console.log(listData);
+  console.log(listData);
   return (
     <div className="list-container">
       <div id="list-name">{listGenre}</div>

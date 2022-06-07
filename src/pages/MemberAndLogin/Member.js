@@ -135,7 +135,7 @@ function Member({ uid }) {
                 </Link>
               </MemberPageButton>
               <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
-                My Favs
+                Favorites
               </HeaderH2>
               <MemberPageButton backgroundColor={"#ffb75e"}>
                 <Link to="/mylist">

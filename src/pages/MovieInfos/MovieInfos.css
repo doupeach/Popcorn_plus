@@ -3,8 +3,13 @@
   flex-direction: column;
   width: 100vw;
   padding-top: 70px;
-  background-image: radial-gradient(farthest-side at 73% 21%, transparent, rgb(26, 29, 41));
+  background-image: radial-gradient(
+    farthest-side at 73% 21%,
+    transparent,
+    rgb(26, 29, 41)
+  );
   inset: 0px;
+  overflow-x: hidden;
 }
 
 .movie-poster {

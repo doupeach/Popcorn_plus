@@ -14,6 +14,7 @@ import {
 import { userLogout, getUserPhotoRef } from "../../utils/firebaseActions";
 import favLogo from "../../images/favBtn.png";
 import Loading from "../../components/Loading/Loading";
+import listBtn from "../../images/listBtn.png";
 
 function Member({ uid }) {
   const db = firebase.firestore();
@@ -129,22 +130,34 @@ function Member({ uid }) {
             </HeaderH2>
 
             <CardBtnDiv justifyContent={"center"}>
-              <MemberPageButton backgroundColor={"#ff0000"}>
-                <Link to="/myfavs">
-                  <img src={favLogo} style={{ width: "35px" }} />
-                </Link>
-              </MemberPageButton>
-              <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
-                Favorites
-              </HeaderH2>
-              <MemberPageButton backgroundColor={"#ffb75e"}>
-                <Link to="/mylist">
-                  <BiNotepad size={"2rem"} color={"#ffffff"} />
-                </Link>
-              </MemberPageButton>
-              <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
-                My List
-              </HeaderH2>
+              <GlowTitle>
+                <MemberPageButton
+                  backgroundColor={"transparent"}
+                  padding={"0px"}
+                >
+                  <Link to="/myfavs">
+                    <img src={favLogo} style={{ width: "35px" }} />
+                  </Link>
+                </MemberPageButton>
+                <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
+                  Favorites
+                </HeaderH2>
+              </GlowTitle>
+
+              <GlowTitle filter={"drop-shadow(0 0 5px rgba(245, 130, 0, 1))"}>
+                <MemberPageButton
+                  backgroundColor={"transparent"}
+                  padding={"0px"}
+                  filter={"drop-shadow(0 0 5px rgba(245, 130, 0, 1))"}
+                >
+                  <Link to="/mylist">
+                    <img src={listBtn} style={{ width: "35px" }} />
+                  </Link>
+                </MemberPageButton>
+                <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
+                  My List
+                </HeaderH2>
+              </GlowTitle>
             </CardBtnDiv>
           </ProfileCardDiv>
           <LogoutButton
@@ -162,8 +175,8 @@ function Member({ uid }) {
           )}
         </MemberDiv>
       ) : (
-        <div style={{ marginTop:'-102px'}}>
-        <Loading />
+        <div style={{ marginTop: "-102px" }}>
+          <Loading />
         </div>
       )}
     </>
@@ -258,8 +271,14 @@ const ConfirmBtnDiv = styled(CardBtnDiv)`
 const MemberPageButton = styled(SubmitButton)`
   background-color: ${(props) => props.backgroundColor};
   padding: ${(props) => (props.padding ? props.padding : "3px 8px")};
-  border-radius: 50px;
   border: none;
+  
+  &:hover {
+    webkitfilter: ${(props) =>
+      props.filter ? props.filter : "drop-shadow(0 0 5px rgba(255, 0, 0, 1))"};
+    filter: ${(props) =>
+      props.filter ? props.filter : "drop-shadow(0 0 5px rgba(255, 0, 0, 1))"};
+  }
 `;
 
 const ChangePhotoLabel = styled.label`
@@ -304,6 +323,21 @@ const LogoutButton = styled(SubmitButton)`
   }
   @media (max-width: 768px) {
     bottom: 20px;
+  }
+`;
+
+const GlowTitle = styled(HeaderH2)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+
+  &:hover {
+    webkitfilter: ${(props) =>
+      props.filter ? props.filter : "drop-shadow(0 0 5px rgba(255, 0, 0, 1))"};
+    filter: ${(props) =>
+      props.filter ? props.filter : "drop-shadow(0 0 5px rgba(255, 0, 0, 1))"};
   }
 `;
 

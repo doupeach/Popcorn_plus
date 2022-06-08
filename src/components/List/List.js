@@ -3,6 +3,7 @@ import "./List.css";
 import plusBtn from "../../images/plusBTN.png";
 import AddToList from "../AddToList/AddToList";
 import popcornBtn from "../../images/popcornBTN.png";
+import AddToCollection from "../AddToCollection/AddToCollection";
 import playBtn from "../../images/playBTN.png";
 
 import ModalVideo from "react-modal-video";
@@ -56,7 +57,7 @@ function List({ listGenre, listData, collectionInfo, uid }) {
                     <AddToList uid={uid} movieId={parseInt(data?.id, 10)} />
                   </div>
                   <div id="popcornBtn">
-                    <img src={popcornBtn} />
+                  <AddToCollection uid={uid} movieId={parseInt(data?.id, 10)} />
                   </div>
                   <div id="playBtn" onClick={() => handleClickPlay(data.id)}>
                     <img src={playBtn} />

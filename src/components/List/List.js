@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./List.css";
 import plusBtn from "../../images/plusBTN.png";
+import AddToList from "../AddToList/AddToList";
 import popcornBtn from "../../images/popcornBTN.png";
 import playBtn from "../../images/playBTN.png";
 
@@ -8,7 +9,7 @@ import ModalVideo from "react-modal-video";
 import { fetchMovie } from "../../utils/api";
 import { Link } from "react-router-dom";
 
-function List({ listGenre, listData, collectionInfo }) {
+function List({ listGenre, listData, collectionInfo, uid }) {
   const [isOpen, setOpen] = useState(false);
   const [trailerKey, setTrailerKey] = useState("L61p2uyiMSo");
   const [dataArr, setDataArr] = useState();
@@ -27,7 +28,7 @@ function List({ listGenre, listData, collectionInfo }) {
     collectionInfo
       ? setDataArr(collectionInfo)
       : listData && setDataArr(listData?.results);
-  }, [collectionInfo,listData]);
+  }, [collectionInfo, listData]);
 
   return (
     <div className="list-container">
@@ -52,7 +53,7 @@ function List({ listGenre, listData, collectionInfo }) {
               <div id="hover-card">
                 <div id="hover-btns">
                   <div id="plusBtn">
-                    <img src={plusBtn} />
+                    <AddToList uid={uid} movieId={parseInt(data?.id, 10)} />
                   </div>
                   <div id="popcornBtn">
                     <img src={popcornBtn} />

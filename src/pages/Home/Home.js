@@ -58,8 +58,8 @@ function Home({ uid, collectionInfo }) {
   return (
     <div className="Home">
       <Banner movieData={movieData} trailerKey={trailerKey} uid={uid} />
-      <List listGenre={"Upcoming"} listData={upcomingMovie} />
-      <List listGenre={"New Releases"} listData={newReleaseMovie} />
+      <List listGenre={"Upcoming"} listData={upcomingMovie} uid={uid} />
+      <List listGenre={"New Releases"} listData={newReleaseMovie} uid={uid} />
       {uid ? (
         <List listGenre={"My List"} collectionInfo={collectionInfo} />
       ) : (

@@ -35,7 +35,10 @@ function BannerHoverCard({ movieData, trailerKey, uid }) {
         <div id="info-card-popcornBtn">
           <AddToCollection uid={uid} movieId={parseInt(movieData.id, 10)} />
         </div>
+
+
         <div id="info-card-playBtn" onClick={() => setOpen(true)}>
+          <p id="info-hover-trailer">trailer</p>
           <img src={playBtn} />
         </div>
       </div>

@@ -14,7 +14,13 @@
   margin: 10px 15px 5px 25px;
 }
 
-#info-card-plusBtn img,
+#info-card-plusBtn img {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
 #info-card-playBtn img {
   width: 39px;
   height: 39px;
@@ -30,6 +36,37 @@
 
 #info-card-playBtn {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+#info-hover-trailer {
+  margin-right: 10px;
+  border: 2px solid #cacaca;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: none;
+}
+
+#info-card-playBtn:hover #info-hover-trailer {
+  display: block;
+  position:relative;
+}
+
+#info-hover-trailer::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-right: 0px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #fff;
+  position: absolute;
+  right: -5px;
+  top: 8px;
 }
 
 #banner-hover-card h4 {

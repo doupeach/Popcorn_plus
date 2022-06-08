@@ -4,6 +4,7 @@ import styled from "styled-components";
 import firebase from "../../../utils/firebase";
 import ReactLoading from "react-loading";
 import { SiGoogle } from "react-icons/si";
+import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
 import { HeaderH1 } from "./SubElements";
 import { StyledSpan } from "./Signup";
@@ -146,7 +147,7 @@ const Signin = ({ toggle, handleOnClick }) => {
         <HeaderSingin>Welcome!</HeaderSingin>
         <SocialContainer>
           <div>
-            <SiGoogle onClick={() => socialMediaClick(googleProvider)} />
+            <FcGoogle size={'25px'} onClick={() => socialMediaClick(googleProvider)} />
           </div>
         </SocialContainer>
         <StyledSpan>press buttons above or use email to sign in</StyledSpan>
@@ -172,7 +173,7 @@ const Signin = ({ toggle, handleOnClick }) => {
         </SignupButton>
         {errorMessage && <h5>{errorMessage}</h5>}
         {isLoading ? (
-          <ReactLoading color="#FBD850" type="spinningBubbles" />
+          <ReactLoading color="#FF0000" type="spinningBubbles" />
         ) : (
           <></>
         )}
@@ -207,9 +208,8 @@ export const StyledForm = styled.form`
   height: 100%;
   text-align: center;
   @media (max-width: 425px) {
-    background: #ffb75e;
-    background: -webkit-linear-gradient(to right, #ed8f03, #ffb75e);
-    background: linear-gradient(to right, #ed8f03, #ffb75e);
+    background-color: #d3d3d3;
+    background-image: linear-gradient(135deg, #d3d3d3 0%, #57606f 74%);
   }
 `;
 
@@ -222,7 +222,7 @@ const HeaderSingin = styled(HeaderH1)`
 export const SocialContainer = styled.div`
   margin: 20px 0;
   div {
-    border: 1.5px solid #ecd9bc;
+    border: 1.5px solid #cacaca;
     border-radius: 50%;
     display: inline-flex;
     justify-content: center;
@@ -269,16 +269,25 @@ export const SubmitButton = styled.div`
   letter-spacing: 1px;
   transition: transform 80ms ease-in;
   align-self: ${(props) => props.alignSelf};
+  &:hover {
+    background-color: rgba(220, 0, 0, 0.5);
+    border-color: rgba(220, 0, 0, 0.6);
+  }
 `;
 
 export const SignupButton = styled(SubmitButton)`
   display: none;
   margin-top: 8px;
-  background-color: #7e876d;
-  border-color: #7e876d;
+  background-color: rgba(245, 180, 0, 0.7);
+  border-color: rgba(245, 180, 0, 0.7);
   padding: 12px 43px;
+  &:hover {
+    background-color: rgba(245, 130, 0, 0.5);
+    border-color: rgba(245, 130, 0, 0.6);
+  }
   @media (max-width: 425px) {
     display: block;
+    padding: 12px 41px;
   }
 `;
 

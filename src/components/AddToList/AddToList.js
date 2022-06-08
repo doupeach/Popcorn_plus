@@ -6,6 +6,7 @@ import plusLogo from "../../images/plusBTN.png";
 import * as Color from "../layout/Color.js";
 import Swal from "sweetalert2";
 import { swalLoginModal } from "../../utils/swalModal";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 
 export default function AddToList({ uid, movieId }) {
   const db = firebase.firestore();
@@ -24,7 +25,7 @@ export default function AddToList({ uid, movieId }) {
 
   function clickAdd(movieId) {
     if (!uid) {
-      return swalLoginModal("Added to my list!");
+      return swalLoginModal("add to my list!");
     }
     if (collected) {
       // remove
@@ -32,12 +33,13 @@ export default function AddToList({ uid, movieId }) {
         my_list: firebase.firestore.FieldValue.arrayRemove(movieId),
       });
       setCollected(false);
-      Swal.fire( {
-        title:"Removed from my list!",
+      Swal.fire({
+        title: "Removed from my list!",
         icon: "success",
         button: false,
         timer: 1500,
-        background: 'radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )',
+        background:
+          "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
       });
     } else {
       // add
@@ -50,34 +52,49 @@ export default function AddToList({ uid, movieId }) {
         icon: "success",
         button: false,
         timer: 1500,
-        background: 'radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )',
+        background:
+          "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
       });
     }
   }
   console.log(uid);
   console.log(movieId);
-  console.log(collected)
+  console.log(collected);
   return (
     <>
-      <Icon
-        src={plusLogo}
-        onClick={() => clickAdd(movieId)}
-        collected={collected}
-      />
+      {collected ? (
+        <BsFillCheckCircleFill
+          size={"35px"}
+          color={"#ffffff"}
+          style={{
+            cursor: "pointer",
+            filter: "drop-shadow(0 0 5px rgba(255, 0, 0, 1))",
+            marginRight: '10px', 
+          }}
+          onClick={() => clickAdd(movieId)}
+        />
+      ) : (
+        <Icon
+          src={plusLogo}
+          onClick={() => clickAdd(movieId)}
+          collected={collected}
+        />
+      )}
     </>
   );
 }
 
-
-
 const Icon = styled.img`
   color: ${(props) => (props.collected ? Color.Main : Color.Content)};
-  filter: ${(props) => (props.collected ? 'drop-shadow(0 0 5px rgba(255, 0, 0, 1))' : 'drop-shadow(1px 1px 10px rgba(0, 0, 0, .5))')};
+  filter: ${(props) =>
+    props.collected
+      ? "drop-shadow(0 0 5px rgba(255, 0, 0, 1))"
+      : "drop-shadow(1px 1px 10px rgba(0, 0, 0, .5))"};
   font-size: 2rem;
   cursor: pointer;
-  transition: .3s ease;
+  transition: 0.3s ease;
   &:hover {
-    webkitFilter: drop-shadow(0 0 5px rgba(255, 0, 0, 1));
+    webkitfilter: drop-shadow(0 0 5px rgba(255, 0, 0, 1));
     filter: drop-shadow(0 0 5px rgba(255, 0, 0, 1));
   }
 `;

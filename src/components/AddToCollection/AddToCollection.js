@@ -24,7 +24,7 @@ export default function AddToCollection({ uid, movieId }) {
 
   function clickAdd(movieId) {
     if (!uid) {
-      return swalLoginModal("Added to favorites!");
+      return swalLoginModal("add to favorites!");
     }
     if (collected) {
       // remove

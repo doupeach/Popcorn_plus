@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import firebase from "../../../utils/firebase";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-import { SiGoogle } from "react-icons/si";
+import { FcGoogle } from "react-icons/fc";
 import ReactLoading from "react-loading";
 import { HeaderH1 } from "./SubElements";
 import {
@@ -117,7 +117,7 @@ const Signup = ({ toggle }) => {
         <HeaderH1>Create Account</HeaderH1>
         <SocialContainer>
           <div>
-            <SiGoogle onClick={() => socialMediaClick(googleProvider)} />
+            <FcGoogle size={'25px'} onClick={() => socialMediaClick(googleProvider)} />
           </div>
         </SocialContainer>
         <StyledSpan>or use your email for registration</StyledSpan>
@@ -146,7 +146,7 @@ const Signup = ({ toggle }) => {
         </SubmitButton>
         {errorMessage && <h5>{errorMessage}</h5>}
         {isLoading ? (
-          <ReactLoading color="#FBD850" type="spinningBubbles" />
+          <ReactLoading color="#FF0000" type="spinningBubbles" />
         ) : (
           <></>
         )}

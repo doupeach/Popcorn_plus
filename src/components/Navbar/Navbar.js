@@ -56,13 +56,13 @@ function Navbar({user}) {
       </div>
       <div id="navbar-link">
         <Link to="/">
-          <div>Home</div>
+          <div className="home-link">Home</div>
         </Link>
 
-        <div onClick={toNewRelease}>New Releases</div>
+        <div className="release-link" onClick={toNewRelease}>New Releases</div>
 
         {user !== null ? <Link to="/mylist" >
-          <div>My List</div>
+          <div className="mylist-link">My List</div>
         </Link> : '' }
 
       </div>
@@ -82,11 +82,11 @@ function Navbar({user}) {
                 value={searchInputValue}
                 type="text"
                 className="search-input"
-                placeholder="Search..."
+                placeholder="Search movie..."
                 onBlur={handleSearchDisplay}
                 onChange={handleSearchInput}
                 onKeyPress={keyPressSearch}
-                // onClick={resetInput}
+                onClick={handleClearInput}
               />
               <button className="delete-button">
                 {searchInputValue && (

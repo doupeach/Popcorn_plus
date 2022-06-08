@@ -185,9 +185,6 @@ function Member({ uid }) {
 
 const MemberDiv = styled.div`
   font-family: "Poppins", sans-serif;
-  background: #ffb75e;
-  background: -webkit-linear-gradient(to right, #ed8f03, #ffb75e);
-  background: linear-gradient(to right, #ed8f03, #ffb75e);
   background-image: radial-gradient(
     farthest-side at 73% 21%,
     transparent,
@@ -202,14 +199,14 @@ const MemberDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
   max-width: 768px;
-  min-height: 65vh;
+  min-height: 63vh;
 
   color: #001a3a;
   transition: transform 0.6s ease-in-out;
   transform: ${(props) =>
     props.active ? ` translateX(50%)` : `translateX(0)`};
 
-  margin: 70px auto 0;
+  margin: 70px auto 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -272,8 +269,9 @@ const MemberPageButton = styled(SubmitButton)`
   background-color: ${(props) => props.backgroundColor};
   padding: ${(props) => (props.padding ? props.padding : "3px 8px")};
   border: none;
-  
+
   &:hover {
+    background-color: transparent;
     webkitfilter: ${(props) =>
       props.filter ? props.filter : "drop-shadow(0 0 5px rgba(255, 0, 0, 1))"};
     filter: ${(props) =>
@@ -318,6 +316,10 @@ const ProfileImgWrap = styled(ImgWrap)`
 const LogoutButton = styled(SubmitButton)`
   position: absolute;
   bottom: 12%;
+  background: rgba(26, 29, 41, 1);
+  &:hover {
+    background: rgba(64, 64, 64, 1);
+  }
   @media (max-width: 768px) {
     bottom: 8%;
   }

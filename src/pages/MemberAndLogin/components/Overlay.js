@@ -96,6 +96,10 @@ const OverlayBtn = styled(SubmitButton)`
   background-color: transparent;
   border-color: #ffffff;
   cursor: pointer;
+  &:hover {
+    background-color: transparent;
+    border: 1px dashed #ffffff;
+  }
 `;
 
 export default Overlay;

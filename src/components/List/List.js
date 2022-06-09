@@ -5,7 +5,7 @@ import AddToList from "../AddToList/AddToList";
 import popcornBtn from "../../images/popcornBTN.png";
 import AddToCollection from "../AddToCollection/AddToCollection";
 import playBtn from "../../images/playBTN.png";
-
+import { BsPlayCircle, BsPlayCircleFill } from "react-icons/bs";
 import ModalVideo from "react-modal-video";
 import { fetchMovie } from "../../utils/api";
 import { Link } from "react-router-dom";
@@ -57,10 +57,14 @@ function List({ listGenre, listData, collectionInfo, uid }) {
                     <AddToList uid={uid} movieId={parseInt(data?.id, 10)} />
                   </div>
                   <div id="popcornBtn">
-                  <AddToCollection uid={uid} movieId={parseInt(data?.id, 10)} />
+                    <AddToCollection
+                      uid={uid}
+                      movieId={parseInt(data?.id, 10)}
+                    />
                   </div>
                   <div id="playBtn" onClick={() => handleClickPlay(data.id)}>
-                    <img src={playBtn} />
+                    <BsPlayCircle color={"#FFF"} size={'30px'} id="bs-play" />
+                    <BsPlayCircleFill color={"#FFF"} size={'32.5px'} id="bs-play-fill" />
                   </div>
                 </div>
                 <Link to={`/movie/${data.id}`}>

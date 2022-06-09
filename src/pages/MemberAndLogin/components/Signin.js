@@ -239,6 +239,9 @@ export const SocialContainer = styled.div`
     div:visited {
       color: black;
     }
+    &:hover {
+      border-color: white;
+    }
   }
 `;
 

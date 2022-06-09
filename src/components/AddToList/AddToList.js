@@ -13,6 +13,7 @@ export default function AddToList({ uid, movieId }) {
   const userRef = db.collection("users");
   const [collected, setCollected] = useState(false);
 
+
   useEffect(() => {
     uid &&
       userRef
@@ -57,9 +58,10 @@ export default function AddToList({ uid, movieId }) {
       });
     }
   }
-  console.log(uid);
-  console.log(movieId);
-  console.log(collected);
+  // console.log(uid);
+  // console.log(movieId);
+  // console.log(collected);
+
   return (
     <>
       {collected ? (
@@ -69,12 +71,13 @@ export default function AddToList({ uid, movieId }) {
           style={{
             cursor: "pointer",
             filter: "drop-shadow(0 0 5px rgba(255, 0, 0, 1))",
-            marginRight: '10px', 
+            marginRight: "10px",
           }}
           onClick={() => clickAdd(movieId)}
         />
       ) : (
         <Icon
+          width={"35px"}
           src={plusLogo}
           onClick={() => clickAdd(movieId)}
           collected={collected}
@@ -85,7 +88,6 @@ export default function AddToList({ uid, movieId }) {
 }
 
 const Icon = styled.img`
-  color: ${(props) => (props.collected ? Color.Main : Color.Content)};
   filter: ${(props) =>
     props.collected
       ? "drop-shadow(0 0 5px rgba(255, 0, 0, 1))"

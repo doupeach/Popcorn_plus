@@ -27,29 +27,41 @@ function SearchResult() {
   console.log(searchInfo);
   return (
     <>
-      {searchInfo?.results.length > 0 ? (
-        <div className="search-result-container">
-          <h2 id="query">Search result of "{query}"</h2>
-
-          <div className="search-result">
-            {searchInfo?.results.map((result) => {
-              const url = result.poster_path
-                ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
-                : noCastPhoto;
-              return (
-                <Link to={`/movie/${result.id}`}>
-                  <div className="search-card">
-                    <img className="search-poster" src={url} alt="" />
-                    <div className="search-title">{result.original_title}</div>
-                    <div className="search-rating">{result.vote_average}</div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      ) : (
+      {isLoading ? (
         <Loading />
+      ) : (
+        <>
+          {searchInfo?.results.length > 0 ? (
+            <div className="search-result-container">
+              <h2 id="query">Search result of "{query}"</h2>
+
+              <div className="search-result">
+                {searchInfo?.results.map((result) => {
+                  const url = result.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                    : noCastPhoto;
+                  return (
+                    <Link to={`/movie/${result.id}`}>
+                      <div className="search-card">
+                        <img className="search-poster" src={url} alt="" />
+                        <div className="search-title">
+                          {result.original_title}
+                        </div>
+                        <div className="search-rating">
+                          {result.vote_average}
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          ) : (
+            <div className="search-not-found">
+              <h1>Your search for "{query}" did not have any matches.</h1>
+            </div>
+          )}
+        </>
       )}
     </>
   );

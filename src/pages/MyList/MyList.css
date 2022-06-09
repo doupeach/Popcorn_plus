@@ -1,4 +1,16 @@
 .mylist-container {
     color: white;
   }
+
+.list-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 155px);
+}
+
+.list-not-found h1 {
+  color: #cacaca;
+  font-size: 1.4rem;
+}
   

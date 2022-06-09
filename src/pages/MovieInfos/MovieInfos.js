@@ -83,9 +83,7 @@ function MovieInfos({uid}) {
                   TRAILER
                 </div>
                 <AddToList uid={uid} movieId={parseInt(movieDetail.id, 10)}/>
-                {/* <img id="detail-plusBtn" src={plusBtn} alt="" /> */}
                 <AddToCollection uid={uid} movieId={parseInt(movieDetail.id, 10)}/>
-                {/* <img id="detail-popcornBtn" src={popcornBtn} alt="" /> */}
               </div>
               <div className="movie-story">{movieDetail.overview}</div>
             </div>

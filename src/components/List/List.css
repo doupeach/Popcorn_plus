@@ -73,17 +73,16 @@
   margin: 15px;
 }
 
-#plusBtn img,
-#playBtn img {
-  width: 39px;
-  height: 39px;
+#plusBtn img, #plusBtn svg {
+  width: 25px;
+  height: 25px;
   margin-right: 10px;
   cursor: pointer;
 }
 
-#popcornBtn img {
-  width: 35px;
-  height: 35px;
+#popcornBtn img,#popcornBtn svg {
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
@@ -121,4 +120,21 @@
   max-height: 170px;
   object-fit: cover;
   object-position: center;
+}
+
+#bs-play {
+  cursor: pointer;
+}
+
+#bs-play-fill {
+  cursor: pointer;
+  display: none;
+}
+
+#bs-play:hover {
+  display:none;
+}
+
+#bs-play:hover + #bs-play-fill{
+  display: block;
 }

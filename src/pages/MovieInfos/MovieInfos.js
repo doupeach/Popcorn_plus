@@ -10,7 +10,7 @@ import { useParams, useHistory } from "react-router-dom";
 import AddToList from "../../components/AddToList/AddToList";
 import AddToCollection from "../../components/AddToCollection/AddToCollection";
 
-function MovieInfos({uid}) {
+function MovieInfos({ uid }) {
   const { id } = useParams();
   const [movieDetail, setMovieDetail] = useState();
   const [castInfo, setCastInfo] = useState();
@@ -82,9 +82,19 @@ function MovieInfos({uid}) {
                   <img id="detail-playBtn" src={playBtn} alt="" />
                   TRAILER
                 </div>
-                <AddToList uid={uid} movieId={parseInt(movieDetail.id, 10)}/>
-                <AddToCollection uid={uid} movieId={parseInt(movieDetail.id, 10)}/>
+
+                <div id="infoPlus">
+                  <AddToList uid={uid} movieId={parseInt(movieDetail.id, 10)} />
+                </div>
+
+                <div id="infoPopcorn">
+                  <AddToCollection
+                    uid={uid}
+                    movieId={parseInt(movieDetail.id, 10)}
+                  />
+                </div>
               </div>
+
               <div className="movie-story">{movieDetail.overview}</div>
             </div>
             <div className="cast-title">Cast</div>

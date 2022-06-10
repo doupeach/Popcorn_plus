@@ -1,0 +1,29 @@
+import "./MobileNavbar.css";
+import searchLogo from "../../images/search_small.png";
+import favLogo from "../../images/favBtn.png";
+import memberLogo from "../../images/memberLogo.png";
+import { Link } from "react-router-dom";
+
+function MobileNavbar({ user, searchDisplay, setSearchDisplay }) {
+
+  function handleSearchDisplay() {
+      console.log('mobile-search-clicked')
+    if (!searchDisplay) {
+      setSearchDisplay(true);
+    } else {
+      setSearchDisplay(false);
+    }
+  }
+
+  return (
+    <div id="mobile-navbar-btn">
+      <img id="mobile-search" src={searchLogo} onClick={handleSearchDisplay} />
+      <img id="mobile-fav" src={favLogo} />
+      <Link to="/login">
+        <img id="mobile-member" src={memberLogo} />
+      </Link>
+    </div>
+  );
+}
+
+export default MobileNavbar;

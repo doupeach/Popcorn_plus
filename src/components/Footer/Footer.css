@@ -18,3 +18,9 @@
   cursor: pointer;
   margin-bottom: 10px;
 }
+
+@media (max-width: 425px) {
+  .footer {
+    display: none;
+  }
+}

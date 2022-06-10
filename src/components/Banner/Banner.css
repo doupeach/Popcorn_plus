@@ -81,3 +81,30 @@
 .close:focus {
   outline: none;
 }
+
+@media (max-width: 768px) {
+  #banner-bg {
+    margin-top: 40px;
+  }
+
+  .banner {
+    height: 55vh;
+  }
+
+  #movie-title {
+    left: 20px;
+    font-size: 26px;
+    top: 30%;
+  }
+
+  #movie-release-date {
+    display: none;
+  }
+
+  #banner-btn {
+    bottom: 47%;
+    padding: 6px 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

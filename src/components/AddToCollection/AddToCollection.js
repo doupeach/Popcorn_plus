@@ -54,9 +54,9 @@ export default function AddToCollection({ uid, movieId }) {
       });
     }
   }
-  console.log(uid);
-  console.log(movieId);
-  console.log(collected)
+  // console.log(uid);
+  // console.log(movieId);
+  // console.log(collected)
   return (
     <>
       <Icon

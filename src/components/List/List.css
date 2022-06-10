@@ -64,23 +64,21 @@
   margin: 10px 5px 5px 5px;
 }
 
-#hover-btns div img:hover {
-  /* border-radius: 50px; */
-}
-
 .card-title {
   color: white;
   margin: 15px;
 }
 
-#plusBtn img, #plusBtn svg {
+#plusBtn img,
+#plusBtn svg {
   width: 25px;
   height: 25px;
   margin-right: 10px;
   cursor: pointer;
 }
 
-#popcornBtn img,#popcornBtn svg {
+#popcornBtn img,
+#popcornBtn svg {
   width: 25px;
   height: 25px;
   cursor: pointer;
@@ -132,9 +130,57 @@
 }
 
 #bs-play:hover {
-  display:none;
+  display: none;
 }
 
-#bs-play:hover + #bs-play-fill{
+#bs-play:hover + #bs-play-fill {
   display: block;
+}
+
+@media (max-width: 768px) {
+  .list-container {
+    padding: 10px;
+    padding-top: 20px;
+    height: 350px;
+    margin-bottom: 50px;
+  }
+
+  .list {
+    padding: 10px;
+    padding-bottom: 0px;
+    margin-top: 15px;
+    height: 300px;
+  }
+
+  #list-name {
+    font-size: 22px;
+    margin-left: 10px;
+  }
+
+  .card-title {
+    display: none;
+  }
+
+  .list:hover #card {
+    transform: none;
+  }
+
+  #card:hover ~ #card {
+    transform: none;
+  }
+
+  .list #card:hover {
+    transform: none;
+    z-index: 1;
+  }
+
+  #hover-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 5px 5px;
+  }
+
+  #card-img {
+    border-radius: 5px 5px 0 0;
+  }
 }

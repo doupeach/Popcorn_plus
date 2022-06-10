@@ -15,6 +15,7 @@ import SearchResult from "./pages/SearchResult/SearchResult";
 import firebase from "./utils/firebase";
 import { fetchCollectionMovies } from "./utils/api";
 import NotFound from "./pages/NotFound/NotFound";
+import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
 
 function App() {
   // const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
   const [userList, setUserList] = useState([]); // 所有user的資料
   const [isLogin, setIsLogin] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [searchDisplay, setSearchDisplay] = useState(false);
 
   useEffect(() => {
     // 取得使用者資料為非同步
@@ -87,7 +89,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop>
-        <Navbar user={user} />
+        <Navbar user={user} searchDisplay={searchDisplay} setSearchDisplay={setSearchDisplay}/>
         <Switch>
           <Route path="/" exact>
             <Home uid={uid} collectionInfo={collectionInfo} />
@@ -119,6 +121,7 @@ function App() {
           </Route>
         </Switch>
         <Footer />
+        <MobileNavbar user={user} searchDisplay={searchDisplay} setSearchDisplay={setSearchDisplay}/>
       </ScrollToTop>
     </BrowserRouter>
   );

@@ -1,0 +1,116 @@
+#mobile-navbar-btn {
+  width: 100%;
+  height: 45px;
+  position: fixed;
+  bottom: 0;
+  background: rgb(26, 29, 41);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  display: none;
+  margin-top: 10px;
+}
+
+#mobile-fav {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+#mobile-member {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#mobile-search {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.mobile-search-box {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.mobile-search-input {
+  background: #000;
+  width: 96%;
+  padding: 5px;
+  border: 1px solid white;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  font-size: 18px;
+  color: white;
+}
+
+.mobile-search-button {
+  text-align: center;
+  height: 35px;
+  width: 40px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid white;
+  border-right: none;
+  background: none;
+  font-size: 20px;
+}
+
+.mobile-delete-button {
+  background: none;
+  outline: none;
+  border: 1px solid white;
+  border-left: none;
+  cursor: pointer;
+}
+
+#mobile-delete-img-logo {
+  width: 20px;
+  height: 20px;
+}
+
+#mobile-clear-input {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* hover effect */
+
+#mobile-navbar-link :hover {
+  text-shadow: 2px 2px 2px white;
+}
+
+#mobile-mobile-navbar-btn :hover {
+  -webkit-filter: drop-shadow(0px 0px 5px white);
+  filter: drop-shadow(0px 0px 5px white);
+}
+
+#mobile-navbar-btn:hover .search-container {
+  -webkit-filter: none;
+  filter: none;
+  text-shadow: none;
+}
+
+#mobile-navbar-btn:hover .search-box {
+  -webkit-filter: none;
+  filter: none;
+  text-shadow: none;
+}
+
+@media screen and (max-width: 768px) {
+  #mobile-navbar-btn {
+    display: flex;
+  }
+}

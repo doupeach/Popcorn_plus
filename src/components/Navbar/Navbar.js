@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Navbar.css";
 import logo from "../../images/Popcorn_logo.png";
+import mobileLogo from "../../images/P+.png";
 import searchLogo from "../../images/search_small.png";
 import favLogo from "../../images/favBtn.png";
 import deleteLogo from "../../images/deleteBtn.png";
@@ -9,8 +10,7 @@ import { Link, useHistory } from "react-router-dom";
 import AddToCollection from "../AddToCollection/AddToCollection";
 import { fetchSearch } from "../../utils/api";
 
-function Navbar({user}) {
-  const [searchDisplay, setSearchDisplay] = useState(false);
+function Navbar({ user, searchDisplay, setSearchDisplay }) {
   const [searchInputValue, setSearchInputValue] = useState("");
   const history = useHistory();
 
@@ -38,8 +38,8 @@ function Navbar({user}) {
   }
 
   function toNewRelease() {
-      // history.push('/');
-      window.scrollTo(0, 630)
+    // history.push('/');
+    window.scrollTo(0, 630);
   }
 
   // console.log(searchInputValue);
@@ -53,18 +53,31 @@ function Navbar({user}) {
             history.push("/");
           }}
         />
+
+        <img
+          id="mobile-logo"
+          src={mobileLogo}
+          onClick={() => {
+            history.push("/");
+          }}
+        />
       </div>
       <div id="navbar-link">
         <Link to="/">
           <div className="home-link">Home</div>
         </Link>
 
-        <div className="release-link" onClick={toNewRelease}>New Releases</div>
+        <div className="release-link" onClick={toNewRelease}>
+          New Releases
+        </div>
 
-        {user !== null ? <Link to="/mylist" >
-          <div className="mylist-link">My List</div>
-        </Link> : '' }
-
+        {user !== null ? (
+          <Link to="/mylist">
+            <div className="mylist-link">My List</div>
+          </Link>
+        ) : (
+          ""
+        )}
       </div>
       <div id="navbar-btn">
         {searchDisplay ? (

@@ -215,11 +215,9 @@ const MemberDiv = styled.div`
     flex-direction: column;
     align-content: center;
     padding-bottom: 30px;
-    min-height: 55vh;
+    min-height: 500px;
   }
-  @media (max-width: 375px) {
-    min-height: 450px;
-  }
+
 `;
 
 const ProfileCardDiv = styled.div`
@@ -233,6 +231,9 @@ const ProfileCardDiv = styled.div`
   flex-direction: ${(props) => props.flexDirection};
   @media (max-width: 768px) {
     min-height: 20vh;
+  }
+  @media (max-width: 425px) {
+    width: 90%;
   }
   @media (max-width: 375px) {
     .welcome-title {
@@ -251,6 +252,9 @@ const CardBtnDiv = styled.div`
   @media (max-width: 768px) {
     justify-content: space-evenly;
   }
+  ${'' /* @media (max-width: 375px) {
+    width: 320px;
+  } */}
 `;
 
 const ConfirmBtnDiv = styled(CardBtnDiv)`

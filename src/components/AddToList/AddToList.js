@@ -13,7 +13,6 @@ export default function AddToList({ uid, movieId }) {
   const userRef = db.collection("users");
   const [collected, setCollected] = useState(false);
 
-
   useEffect(() => {
     uid &&
       userRef

@@ -2,7 +2,7 @@ import firebase from "./firebase"
 
 const db = firebase.firestore();
 const userRef = db.collection("users");
-
+const listRef = db.collection("lists")
 const firestore = firebase.firestore();
 
 export const getCollectionsOnSnapshot = (collectionName, setContents) => {

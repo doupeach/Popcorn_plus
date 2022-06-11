@@ -22,7 +22,7 @@ function MovieInfos({ uid }) {
     let directorName = "";
     castInfo.crew.forEach((crew) => {
       if (crew.job === "Director") {
-        directorName = crew.name;
+        directorName = crew.name
       }
     });
     return directorName;
@@ -82,7 +82,7 @@ function MovieInfos({ uid }) {
     return () => {
       isMount = false; // 清除fetchAPI
     };
-  }, []);
+  }, [id]);
 
   console.log(movieDetail);
   console.log(castInfo);
@@ -94,7 +94,7 @@ function MovieInfos({ uid }) {
           <div className="movie-infos">
             <img
               className="movie-poster"
-              src={`https://image.tmdb.org/t/p/w1280/${movieDetail.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/w1280/${movieDetail.backdrop_path || movieDetail.poster_path}`}
               alt=""
             />
             <div className="information">
@@ -120,7 +120,7 @@ function MovieInfos({ uid }) {
 
               <div className="movie-story">{movieDetail.overview}</div>
             </div>
-            {castInfo && <div className="director-title">Director</div>}
+            {castInfo?.crew.length !== 0 && <div className="director-title">Director</div>}
             {castInfo && (
               <div className="cast-card director-wrap">
                 <img className="cast-img" src={getDirectorImage()} alt="" />

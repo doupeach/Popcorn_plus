@@ -120,7 +120,7 @@ function MovieInfos({ uid }) {
 
               <div className="movie-story">{movieDetail.overview}</div>
             </div>
-            {castInfo && <div className="cast-title">Director</div>}
+            {castInfo && <div className="director-title">Director</div>}
             {castInfo && (
               <div className="cast-card director-wrap">
                 <img className="cast-img" src={getDirectorImage()} alt="" />

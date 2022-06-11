@@ -38,6 +38,13 @@
   margin-top: 10px;
 }
 
+.director-title {
+  color: white;
+  margin-top: 5%;
+  font-size: 42px;
+  margin-left: 5%;
+}
+
 .cast-title {
   color: white;
   margin-top: 5%;
@@ -176,9 +183,14 @@
     overflow-y: scroll;
   }
 
-  .cast-title {
+  .director-title {
     font-size: 45px;
     margin-top: 450px;
+  }
+
+  .cast-title {
+    font-size: 45px;
+    margin-top: 5%;
   }
 
   .cast-list {
@@ -201,6 +213,10 @@
   .movie-story {
     top: 330px;
     width: 80%;
+  }
+
+  .director-title {
+    font-size: 32px;
   }
 
   .cast-title {

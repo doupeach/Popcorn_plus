@@ -57,6 +57,7 @@
   display: block;
   color: #cacaca;
   font-size: 1.4rem;
+  word-break: break-word;
 }
 
 @media (max-width: 768px) {
@@ -71,9 +72,6 @@
 }
 
 @media (max-width: 425px) {
-  .search-not-found div{
-    word-break: break-word;
-  }
 
   #query {
     font-size: 24px;

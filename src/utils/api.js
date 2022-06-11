@@ -72,3 +72,7 @@ export async function fetchUpcomingNewRelease() {
     });
     return result;
   }
+
+  export const getRandomNewReleaseMovie = (max) => {
+    return Math.floor(Math.random() * max);
+  };

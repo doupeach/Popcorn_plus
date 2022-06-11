@@ -16,6 +16,7 @@ import firebase from "./utils/firebase";
 import { fetchCollectionMovies } from "./utils/api";
 import NotFound from "./pages/NotFound/NotFound";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
+import MovieNotFound from "./pages/MovieNotFound/MovieNotFound";
 
 function App() {
   // const dispatch = useDispatch();
@@ -112,6 +113,9 @@ function App() {
 
           <Route exact path="/movie/:id">
             <MovieInfos uid={uid} />
+          </Route>
+          <Route exact path="/movie-no-match">
+            <MovieNotFound />
           </Route>
           <Route exact path="/search/:query">
             <SearchResult />

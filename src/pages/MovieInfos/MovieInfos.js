@@ -18,6 +18,28 @@ function MovieInfos({ uid }) {
   const [isOpen, setOpen] = useState(false);
   const [trailerKey, setTrailerKey] = useState();
 
+  function getDirector() {
+    let directorName = "";
+    castInfo.crew.forEach((crew) => {
+      if (crew.job === "Director") {
+        directorName = crew.name;
+      }
+    });
+    return directorName;
+  }
+
+  function getDirectorImage() {
+    let directorImg = "";
+    castInfo.crew.forEach((crew) => {
+      if (crew.job === "Director") {
+        directorImg = crew.profile_path
+          ? `https://image.tmdb.org/t/p/w500${crew.profile_path}`
+          : noCastPhoto;
+      }
+    });
+    return directorImg;
+  }
+
   useEffect(() => {
     let isMount = true;
     if (movieDetail && isMount) {
@@ -35,7 +57,7 @@ function MovieInfos({ uid }) {
     if (isMount) {
       fetchMovie(id).then((res) => {
         if (res.status_code === 34) {
-          history.push("/no-match");
+          history.push("/movie-no-match");
         } else {
           setMovieDetail(res);
         }
@@ -44,7 +66,7 @@ function MovieInfos({ uid }) {
     return () => {
       isMount = false; // 清除fetchAPI
     };
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     let isMount = true;
@@ -77,6 +99,7 @@ function MovieInfos({ uid }) {
             />
             <div className="information">
               <div className="movie-title">{movieDetail.title}</div>
+              <div className="movie-date">{movieDetail.release_date}</div>
               <div className="action-btns">
                 <div id="trailerBtn" onClick={() => setOpen(true)}>
                   <img id="detail-playBtn" src={playBtn} alt="" />
@@ -97,7 +120,14 @@ function MovieInfos({ uid }) {
 
               <div className="movie-story">{movieDetail.overview}</div>
             </div>
-            <div className="cast-title">Cast</div>
+            {castInfo && <div className="cast-title">Director</div>}
+            {castInfo && (
+              <div className="cast-card director-wrap">
+                <img className="cast-img" src={getDirectorImage()} alt="" />
+                <div className="director">{getDirector()}</div>
+              </div>
+            )}
+            {castInfo?.cast.length !== 0 && <div className="cast-title">Cast</div>}
             <div className="cast-list">
               {castInfo?.cast?.map((member) => {
                 const url = member.profile_path
@@ -121,7 +151,11 @@ function MovieInfos({ uid }) {
             onClose={() => setOpen(false)}
           />
         </>
-      ) : null}
+      ) : (
+        <div className="movie-not-found">
+          <div>Oops! Please try again!</div>
+        </div>
+      )}
     </>
   );
 }

@@ -6,9 +6,9 @@ import searchLogo from "../../images/search_small.png";
 import favLogo from "../../images/favBtn.png";
 import deleteLogo from "../../images/deleteBtn.png";
 import memberLogo from "../../images/memberLogo.png";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory,useLocation } from "react-router-dom";
 import AddToCollection from "../AddToCollection/AddToCollection";
-import { fetchSearch } from "../../utils/api";
+import { getRandomNewReleaseMovie } from "../../utils/api";
 
 function Navbar({ user, searchDisplay, setSearchDisplay }) {
   const [searchInputValue, setSearchInputValue] = useState("");
@@ -37,9 +37,9 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
     }
   }
 
-  function toNewRelease() {
-    // history.push('/');
-    window.scrollTo(0, 630);
+  function getRandomMovie() {
+    let idRange = 600000
+    history.push(`/movie/${getRandomNewReleaseMovie(idRange)}`)
   }
 
   // console.log(searchInputValue);
@@ -67,8 +67,8 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
           <div className="home-link">Home</div>
         </Link>
 
-        <div className="release-link" onClick={toNewRelease}>
-          New Releases
+        <div className="release-link" onClick={getRandomMovie}>
+          Surprise me!
         </div>
 
         {user !== null ? (

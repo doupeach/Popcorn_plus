@@ -3,16 +3,13 @@ import Banner from "../../components/Banner/Banner";
 import List from "../../components/List/List";
 import { fetchUpcomingNewRelease, fetchMovie } from "../../utils/api";
 import { data } from "../../components/mockData";
+import { getRandomNewReleaseMovie } from "../../utils/api";
 
 function Home({ uid, collectionInfo }) {
   const [upcomingMovie, setUpComingMovie] = useState();
   const [newReleaseMovie, setNewReleaseMovie] = useState();
   const [movieData, setMovieData] = useState();
   const [trailerKey, setTrailerKey] = useState();
-
-  const getRandomNewReleaseMovie = (max) => {
-    return Math.floor(Math.random() * max);
-  };
 
   useEffect(() => {
     let isMount = true;

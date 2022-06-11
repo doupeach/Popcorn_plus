@@ -8,7 +8,6 @@ const notFoundStyle = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-
 };
 
 function NotFound() {

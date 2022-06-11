@@ -31,10 +31,17 @@
   margin-left: 5%;
 }
 
+.movie-date{
+  color: white;
+  font-size: 22px;
+  margin-left: 5%;
+  margin-top: 10px;
+}
+
 .cast-title {
   color: white;
   margin-top: 5%;
-  font-size: 55px;
+  font-size: 42px;
   margin-left: 5%;
 }
 
@@ -106,6 +113,18 @@
   padding: 0 5%;
   margin-top: 30px;
   overflow-x: scroll;
+}
+
+.director-wrap {
+  padding-left: 5%;
+  margin-top: 30px;
+}
+
+.director {
+  color: white;
+  margin-top: 15px;
+  font-size: 20px;
+  /* margin-left: 5%; */
 }
 
 .cast-card {
@@ -202,3 +221,4 @@
     height: 200px;
   }
 }
+

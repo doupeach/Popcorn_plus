@@ -37,55 +37,6 @@ a:visited {
   color: white;
 }
 
-.mobile-search-box {
-  width: 100%;
-  position: relative;
-  display: flex;
-}
-
-.mobile-search-input {
-  background: #000;
-  width: 96%;
-  padding: 5px;
-  border: 1px solid white;
-  border-left: none;
-  border-right: none;
-  outline: none;
-  font-size: 18px;
-  color: white;
-}
-
-.mobile-search-button {
-  text-align: center;
-  height: 35px;
-  width: 40px;
-  outline: none;
-  cursor: pointer;
-  border: 1px solid white;
-  border-right: none;
-  background: none;
-  font-size: 20px;
-}
-
-.mobile-delete-button {
-  background: none;
-  outline: none;
-  border: 1px solid white;
-  border-left: none;
-  cursor: pointer;
-}
-
-#mobile-delete-img-logo {
-  width: 20px;
-  height: 20px;
-}
-
-#mobile-clear-input {
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-}
-
 /* hover effect */
 
 #mobile-navbar-link :hover {

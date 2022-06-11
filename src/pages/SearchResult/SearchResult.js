@@ -58,7 +58,7 @@ function SearchResult() {
             </div>
           ) : (
             <div className="search-not-found">
-              <h1>Your search for "{query}" did not have any matches.</h1>
+              <div>Your search for "{query}" did not have any matches.</div>
             </div>
           )}
         </>

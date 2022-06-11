@@ -75,6 +75,7 @@ a:visited {
   width: 100%;
   position: relative;
   display: flex;
+  align-items: center;
 }
 
 .search-input {
@@ -91,7 +92,7 @@ a:visited {
 
 .search-button {
   text-align: center;
-  height: 35px;
+  height: 33px;
   width: 40px;
   outline: none;
   cursor: pointer;
@@ -103,10 +104,12 @@ a:visited {
 
 .delete-button {
   background: none;
+  height: 33px;
   outline: none;
   border: 1px solid white;
   border-left: none;
   cursor: pointer;
+  margin-left: 0px;
 }
 
 #delete-img-logo {
@@ -197,7 +200,7 @@ a:visited {
 
   .search-input {
     width: 100%;
-    padding: 0 5px;
+    padding: 5px;
     border: 1px solid white;
     border-left: none;
     border-right: none;
@@ -212,4 +215,3 @@ a:visited {
     height: 15px;
   }
 }
-

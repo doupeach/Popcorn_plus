@@ -57,3 +57,7 @@ export const userLogout = () => {
 export const getUserPhotoRef = (refName, currentUser) => {
   return firebase.storage().ref(refName + currentUser.uid);
 };
+
+export const getCreatedAt = () => {
+  return firebase.firestore.Timestamp.now();
+};

@@ -1,8 +1,5 @@
 import firebase from "./firebase"
 
-const db = firebase.firestore();
-const userRef = db.collection("users");
-const listRef = db.collection("lists")
 const firestore = firebase.firestore();
 
 export const getCollectionsOnSnapshot = (collectionName, setContents) => {
@@ -105,4 +102,21 @@ export const getMyCollections = (
       setContents(data);
     });
   return unsub;
+};
+
+export const getCollectionsFieldUpdate = (
+  collectionName,
+  id,
+  field,
+  activeInField,
+  uid
+) => {
+  firestore
+    .collection(collectionName)
+    .doc(id)
+    .update({
+      [field]: activeInField
+        ? firebase.firestore.FieldValue.arrayRemove(uid)
+        : firebase.firestore.FieldValue.arrayUnion(uid),
+    });
 };

@@ -129,7 +129,7 @@ function Member({ uid }) {
             </HeaderH2>
 
             <CardBtnDiv justifyContent={"center"}>
-              <GlowTitle>
+              {/* <GlowTitle>
                 <MemberPageButton
                   backgroundColor={"transparent"}
                   padding={"0px"}
@@ -141,7 +141,7 @@ function Member({ uid }) {
                 <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
                   Favorites
                 </HeaderH2>
-              </GlowTitle>
+              </GlowTitle> */}
 
               <GlowTitle filter={"drop-shadow(0 0 5px rgba(245, 130, 0, 1))"}>
                 <MemberPageButton

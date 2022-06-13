@@ -18,6 +18,7 @@ import { fetchCollectionMovies } from "./utils/api";
 import NotFound from "./pages/NotFound/NotFound";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
 import MovieNotFound from "./pages/MovieNotFound/MovieNotFound";
+import PersonalList from "./pages/PersonalList/PersonalList";
 
 function App() {
   // const dispatch = useDispatch();
@@ -107,6 +108,14 @@ function App() {
           <Route path="/mylist" exact>
             {user !== null ? (
               <MyList currentUserInfo={currentUserInfo} uid={uid}/>
+            ) : (
+              <Redirect to="/login" />
+            )}
+          </Route>
+
+          <Route path="/mylist/:id" exact>
+            {user !== null ? (
+              <PersonalList />
             ) : (
               <Redirect to="/login" />
             )}

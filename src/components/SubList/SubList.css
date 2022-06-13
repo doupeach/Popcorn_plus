@@ -1,0 +1,43 @@
+#delete-list-btn {
+  cursor: pointer;
+}
+
+#delete-list-btn:hover {
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+}
+
+.mylist-card:hover {
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+}
+
+.plusList-wrap {
+  position: relative;
+  min-width: 170px;
+  height: 255px;
+  border: 1px solid #cacaca;
+  background: rgb(22, 21, 21);
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.plusList-wrap:hover{
+    border: 1px solid white;
+    background: rgb(15, 15, 15);
+}
+
+.plusList {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+}
+
+#list-wrap {
+    padding-left: 20px;
+    display: flex;
+    overflow-x: scroll;
+}

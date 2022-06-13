@@ -2,37 +2,41 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import firebase from "../../utils/firebase";
 import plusLogo from "../../images/plusBTN.png";
+import * as Color from "../layout/Color.js";
 import Swal from "sweetalert2";
 import { swalLoginModal } from "../../utils/swalModal";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
-export default function AddToList({ uid, movieId }) {
+export default function AddFromList({ uid, data, movieId }) {
   const db = firebase.firestore();
-  const userRef = db.collection("users");
+  const listRef = db.collection("lists");
   const [collected, setCollected] = useState(false);
 
   useEffect(() => {
-    uid &&
-      userRef
-        .doc(uid)
-        .get()
-        .then((doc) => {
-          setCollected(doc.data().my_list?.includes(movieId));
-        });
-  }, [uid]);
-
-  function clickAdd(movieId) {
     if (!uid) {
       return swalLoginModal("add to my list!");
     }
+    data?.id &&
+      listRef
+        .doc(data.id)
+        .get()
+        .then((doc) => {
+          setCollected(doc.data().list_data?.includes(movieId));
+        });
+  }, [data]);
+
+  function clickAdd(movieId) {
+    if (!uid) {
+      return swalLoginModal("add to favorites!");
+    }
     if (collected) {
       // remove
-      userRef.doc(uid).update({
-        my_list: firebase.firestore.FieldValue.arrayRemove(movieId),
+      listRef.doc(data.id).update({
+        list_data: firebase.firestore.FieldValue.arrayRemove(movieId),
       });
       setCollected(false);
       Swal.fire({
-        title: "Removed from my list!",
+        title: "Removed from the list!",
         icon: "success",
         button: false,
         timer: 1500,
@@ -41,12 +45,12 @@ export default function AddToList({ uid, movieId }) {
       });
     } else {
       // add
-      userRef.doc(uid).update({
-        my_list: firebase.firestore.FieldValue.arrayUnion(movieId),
+      listRef.doc(data.id).update({
+        list_data: firebase.firestore.FieldValue.arrayUnion(movieId),
       });
       setCollected(true);
       Swal.fire({
-        title: "Added to my list!",
+        title: "Added to the list!",
         icon: "success",
         button: false,
         timer: 1500,
@@ -55,10 +59,10 @@ export default function AddToList({ uid, movieId }) {
       });
     }
   }
-  // console.log(uid);
-  // console.log(movieId);
-  // console.log(collected);
-
+//   console.log(uid);
+//   console.log(data.id);
+//   console.log(movieId);
+//   console.log(collected)
   return (
     <>
       {collected ? (

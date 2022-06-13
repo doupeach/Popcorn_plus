@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./MyList.css";
 import { Link } from "react-router-dom";
+
 import { fetchCollectionMovies } from "../../utils/api";
 import { getMyCollections } from "../../utils/firebaseActions";
 import Popup from "reactjs-popup";
@@ -48,17 +49,21 @@ function MyList({ uid, currentUserInfo }) {
 
   useEffect(() => {
     if (lists) {
+      let listIds = lists?.map((data) => data.id);
       let listNames = lists?.map((data) => data.list_name);
+      let listDataIds = lists?.map((data) => data.list_data);
       let requests = lists?.map((data) =>
         fetchCollectionMovies(data.list_data)
       );
       Promise.all(requests).then((res) => {
-        let newResults = Object.assign({}, { name: listNames, data: res });
+        let newResults = Object.assign({}, { name: listNames, data: res, id:listIds, dataId: listDataIds });
         setListsData(newResults);
       });
     }
   }, [lists]);
-  
+
+  // console.log(lists)
+  // console.log(collectionInfo)
   return (
     <>
       {isLoading ? (
@@ -94,7 +99,7 @@ function MyList({ uid, currentUserInfo }) {
                 </Popup>
               </div>
 
-              <SubList listsData={listsData} noCastPhoto={noCastPhoto} />
+              <SubList listsData={listsData} noCastPhoto={noCastPhoto} uid={uid} collectionInfo={collectionInfo}/>
 
               <h2 id="mylist-name">All</h2>
               <div className="mylist-result">

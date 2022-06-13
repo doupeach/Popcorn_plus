@@ -119,7 +119,7 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
         {!searchDisplay && (
           <img id="search" src={searchLogo} onClick={handleSearchDisplay} />
         )}
-        <img id="fav" src={favLogo} />
+        {/* <img id="fav" src={favLogo} /> */}
         <Link to="/login">
           <img id="member" src={memberLogo} />
         </Link>

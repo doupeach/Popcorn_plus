@@ -1,5 +1,5 @@
 import React from "react";
-import { BsFileX } from "react-icons/bs";
+
 const notFoundStyle = {
   color: "#cacaca",
   fontSize: "50px",

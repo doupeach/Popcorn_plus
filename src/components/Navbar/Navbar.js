@@ -42,7 +42,6 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
     history.push(`/movie/${getRandomNewReleaseMovie(idRange)}`)
   }
 
-  // console.log(searchInputValue);
   return (
     <div className="navbar">
       <div id="logo-wrap">

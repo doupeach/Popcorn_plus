@@ -18,6 +18,28 @@ export const getCollectionsOnSnapshot = (collectionName, setContents) => {
   return unsub;
 };
 
+export const getCollectionsDescOrder = (
+  collectionName,
+  setContents,
+  lastCollectionSnapshotRef
+) => {
+  const unsub = firestore
+    .collection(collectionName)
+    .orderBy("createdAt", "desc")
+    .limit(4)
+    .onSnapshot((collectionSnapshot) => {
+      const data = collectionSnapshot.docs.map((docSnapshot) => {
+        const id = docSnapshot.id;
+        return { ...docSnapshot.data(), id };
+      });
+      lastCollectionSnapshotRef.current =
+        collectionSnapshot.docs[collectionSnapshot.docs.length - 1];
+      setContents(data);
+    });
+
+  return unsub;
+};
+
 export const getDocumentRef = (collectionName, id) => {
   return firestore.collection(collectionName).doc(id);
 };
@@ -60,4 +82,27 @@ export const getUserPhotoRef = (refName, currentUser) => {
 
 export const getCreatedAt = () => {
   return firebase.firestore.Timestamp.now();
+};
+
+export const getMyCollections = (
+  collectionName,
+  currentUser,
+  setContents,
+  // lastCollectionSnapshotRef
+) => {
+  const unsub = firestore
+    .collection(collectionName)
+    .where("owner", "==", currentUser)
+    .orderBy("created_time", "desc")
+    .limit(4)
+    .onSnapshot((collectionSnapshot) => {
+      const data = collectionSnapshot.docs.map((docSnapshot) => {
+        const id = docSnapshot.id;
+        return { ...docSnapshot.data(), id };
+      });
+      // lastCollectionSnapshotRef.current =
+      //   collectionSnapshot.docs[collectionSnapshot.docs.length - 1];
+      setContents(data);
+    });
+  return unsub;
 };

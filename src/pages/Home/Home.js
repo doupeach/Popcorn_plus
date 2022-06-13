@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Banner from "../../components/Banner/Banner";
 import List from "../../components/List/List";
 import { fetchUpcomingNewRelease, fetchMovie } from "../../utils/api";
-import { data } from "../../components/mockData";
 import { getRandomNewReleaseMovie } from "../../utils/api";
 
 function Home({ uid, collectionInfo }) {
@@ -58,7 +57,7 @@ function Home({ uid, collectionInfo }) {
       <List listGenre={"Upcoming"} listData={upcomingMovie} uid={uid} />
       <List listGenre={"New Releases"} listData={newReleaseMovie} uid={uid} />
       {uid ? (
-        <List listGenre={"My List"} collectionInfo={collectionInfo} />
+        <List listGenre={"My List"} collectionInfo={collectionInfo} uid={uid}/>
       ) : (
         ""
       )}

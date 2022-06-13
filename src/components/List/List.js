@@ -22,12 +22,12 @@ function List({ listGenre, listData, collectionInfo, uid }) {
     });
   };
 
-  console.log(listData);
-  console.log(collectionInfo);
+  // console.log(listData);
+  // console.log(collectionInfo);
 
   useEffect(() => {
     collectionInfo
-      ? setDataArr(collectionInfo)
+      ? setDataArr(collectionInfo.slice(0).reverse())
       : listData && setDataArr(listData?.results);
   }, [collectionInfo, listData]);
 

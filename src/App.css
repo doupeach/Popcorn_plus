@@ -14,3 +14,13 @@ body {
 body ::-webkit-scrollbar {
   display: none; /* for Chrome, Safari, and Opera */
 }
+
+/* disable safari ios input default css */
+
+input {
+  border-radius: 0;
+}
+
+input[type="search"] {
+  -webkit-appearance: none;
+}

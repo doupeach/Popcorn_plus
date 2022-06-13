@@ -77,7 +77,6 @@ function Member({ uid }) {
     });
   }
 
-  console.log(currentUser);
   return (
     <>
       {currentUser ? (
@@ -217,7 +216,6 @@ const MemberDiv = styled.div`
     padding-bottom: 30px;
     min-height: 500px;
   }
-
 `;
 
 const ProfileCardDiv = styled.div`
@@ -252,9 +250,11 @@ const CardBtnDiv = styled.div`
   @media (max-width: 768px) {
     justify-content: space-evenly;
   }
-  ${'' /* @media (max-width: 375px) {
+  ${
+    "" /* @media (max-width: 375px) {
     width: 320px;
-  } */}
+  } */
+  }
 `;
 
 const ConfirmBtnDiv = styled(CardBtnDiv)`

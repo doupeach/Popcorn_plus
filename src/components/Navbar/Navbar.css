@@ -48,16 +48,6 @@
   cursor: pointer;
 }
 
-/* disable safari ios input default css */
-
-input {
-  border-radius: 0;
-}
-
-input[type="search"] {
-  -webkit-appearance: none;
-}
-
 #search {
   width: 35px;
   height: 35px;

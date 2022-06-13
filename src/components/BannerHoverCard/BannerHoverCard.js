@@ -16,8 +16,8 @@ function BannerHoverCard({ movieData, trailerKey, uid }) {
     fetchCast(movieData.id).then((res) => setCastInfo(res));
   }, []);
 
-  console.log(movieData.id);
-  console.log(castInfo);
+  // console.log(movieData.id);
+  // console.log(castInfo);
   return (
     <div id="banner-hover-card">
       <img

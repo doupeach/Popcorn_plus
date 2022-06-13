@@ -3,6 +3,7 @@ import Home from "./pages/Home/Home";
 import "./base.css";
 import "./App.css";
 import "../node_modules/react-modal-video/scss/modal-video.scss";
+import "reactjs-popup/dist/index.css";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Member from "./pages/MemberAndLogin/Member";
 import Login from "./pages/MemberAndLogin/Login";
@@ -81,11 +82,11 @@ function App() {
     };
   }, [currentUserInfo]);
 
-  console.log(uid);
-  console.log(user);
-  console.log(userList);
-  console.log(currentUserInfo);
-  console.log(collectionInfo);
+  // console.log(uid);
+  // console.log(user);
+  // console.log(userList);
+  // console.log(currentUserInfo);
+  // console.log(collectionInfo);
 
   return (
     <BrowserRouter>
@@ -105,7 +106,7 @@ function App() {
 
           <Route path="/mylist" exact>
             {user !== null ? (
-              <MyList currentUserInfo={currentUserInfo} />
+              <MyList currentUserInfo={currentUserInfo} uid={uid}/>
             ) : (
               <Redirect to="/login" />
             )}

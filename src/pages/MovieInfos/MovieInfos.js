@@ -84,9 +84,6 @@ function MovieInfos({ uid }) {
     };
   }, [id]);
 
-  console.log(movieDetail);
-  console.log(castInfo);
-
   return (
     <>
       {movieDetail ? (

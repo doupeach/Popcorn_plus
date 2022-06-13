@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import firebase from "../../utils/firebase";
-import { IoHeartCircleSharp } from "react-icons/io5";
+import { IoHeartCircleSharp } from "react-icons/io";
 import favLogo from "../../images/favBtn.png";
 import * as Color from "../layout/Color.js";
 import Swal from "sweetalert2";

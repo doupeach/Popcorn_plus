@@ -23,8 +23,6 @@ function SearchResult() {
     };
   }, [query]);
 
-  console.log(query);
-  console.log(searchInfo);
   return (
     <>
       {isLoading ? (

@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 function MobileNavbar({ user, searchDisplay, setSearchDisplay }) {
 
   function handleSearchDisplay() {
-      console.log('mobile-search-clicked')
     if (!searchDisplay) {
       setSearchDisplay(true);
     } else {

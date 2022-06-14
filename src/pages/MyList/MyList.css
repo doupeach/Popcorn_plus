@@ -1,6 +1,6 @@
 .list-not-found {
   display: flex;
-  justify-new-list-content: center;
+  justify-content: center;
   align-items: center;
   height: calc(100vh - 155px);
 }
@@ -59,7 +59,7 @@
 
 .mylist-new-list svg{
   margin-top: 70px;
-  margin-left: 50px;
+  margin-left: 20px;
 }
 
 #new-list-btn {
@@ -116,7 +116,7 @@
   }
 
   .mylist-container {
-    margin: 20px 10px;
+    margin: 20px 0px;
   }
 }
 

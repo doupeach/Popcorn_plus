@@ -7,6 +7,14 @@
   filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
 }
 
+#mylist-name {
+  margin-right: 30px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
 .mylist-card:hover {
   -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
   filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
@@ -22,9 +30,9 @@
   margin-left: 30px;
 }
 
-.plusList-wrap:hover{
-    border: 1px solid white;
-    background: rgb(15, 15, 15);
+.plusList-wrap:hover {
+  border: 1px solid white;
+  background: rgb(15, 15, 15);
 }
 
 .plusList {
@@ -36,8 +44,42 @@
   height: 45px;
 }
 
+.editList {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
 #list-wrap {
-    padding-left: 20px;
-    display: flex;
+  padding-left: 20px;
+  display: flex;
+  overflow-x: scroll;
+}
+
+@media (max-width: 425px) {
+  #mylist-name {
+    font-size: 20px;
+    margin-right: 0px;
+  }
+
+  #delete-list-btn {
+    margin-top: 55px;
+  }
+
+  #mobile-mylist-new-list .editList {
+    margin-top: 55px;
+    margin-left: 20px;
+  }
+
+  #mobile-mylist-new-list a {
+    width: 300px;
     overflow-x: scroll;
+  }
+  #list-wrap {
+    padding-left: 0px;
+  }
+
+  .mylist-container {
+    padding: 30px;
+  }
 }

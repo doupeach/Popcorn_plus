@@ -17,7 +17,7 @@ function MobileNavbar({ user, searchDisplay, setSearchDisplay }) {
   return (
     <div id="mobile-navbar-btn">
       <img id="mobile-search" src={searchLogo} onClick={handleSearchDisplay} />
-      <img id="mobile-fav" src={favLogo} />
+      {/* <img id="mobile-fav" src={favLogo} /> */}
       <Link to="/login">
         <img id="mobile-member" src={memberLogo} />
       </Link>

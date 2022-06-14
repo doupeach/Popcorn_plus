@@ -91,7 +91,7 @@ export const getMyCollections = (
     .collection(collectionName)
     .where("owner", "==", currentUser)
     .orderBy("created_time", "desc")
-    .limit(4)
+    // .limit(4)
     .onSnapshot((collectionSnapshot) => {
       const data = collectionSnapshot.docs.map((docSnapshot) => {
         const id = docSnapshot.id;

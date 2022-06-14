@@ -3,7 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import Popup from "reactjs-popup";
 import "./SubList.css";
-import { RiDeleteBin2Fill } from "react-icons/ri";
+import { RiDeleteBin2Fill, RiEdit2Line } from "react-icons/ri";
+import { BiEdit } from "react-icons/bi";
 import { deleteDoc } from "../../utils/firebaseActions";
 import plusLogo from "../../images/plusBTN.png";
 import AddFromListModal from "../AddFromListModal/AddFromListModal";
@@ -29,16 +30,16 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
     });
   }, [listsData]);
   const location = useLocation();
-  function handleDeleteList(id){
-    deleteDoc("lists", id)
+  function handleDeleteList(id) {
+    deleteDoc("lists", id);
     Swal.fire({
-        title: "Deleted!",
-        icon: "success",
-        button: false,
-        timer: 1500,
-        background:
-          "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
-      });
+      title: "Deleted!",
+      icon: "success",
+      button: false,
+      timer: 1500,
+      background:
+        "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
+    });
   }
 
   console.log(listsData.id);
@@ -49,7 +50,7 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
       {results?.map((data) => {
         return (
           <div>
-            <div className="mylist-new-list">
+            <div className="mylist-new-list" id="mobile-mylist-new-list">
               <Link
                 to={{ pathname: `/mylist/${data.id}`, state: { data } }}
                 key={data.id}
@@ -61,15 +62,16 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
                 id="delete-list-btn"
                 color={"white"}
                 size={"25px"}
-                onClick={()=>handleDeleteList(data.id)}
+                onClick={() => handleDeleteList(data.id)}
               />
-            </div>
-
-            <div className="mylist-result">
-              <div className="plusList-wrap">
+              {data.data.length && (
                 <Popup
                   trigger={
-                    <img className="plusList" src={plusLogo} alt="plusList" />
+                    <BiEdit
+                      className="editList"
+                      color={"white"}
+                      size={"25px"}
+                    />
                   }
                   modal
                   nested
@@ -92,7 +94,40 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
                     </div>
                   )}
                 </Popup>
-              </div>
+              )}
+            </div>
+
+            <div className="mylist-result">
+              {!data.data.length && (
+                <div className="plusList-wrap">
+                  <Popup
+                    trigger={
+                      <img className="plusList" src={plusLogo} alt="plusList" />
+                    }
+                    modal
+                    nested
+                    {...{ contentStyle, overlayStyle, arrowStyle }}
+                  >
+                    {(close) => (
+                      <div className="new-list-modal">
+                        <button className="new-list-close" onClick={close}>
+                          &times;
+                        </button>
+                        <div className="new-list-content">
+                          <AddFromListModal
+                            uid={uid}
+                            collectionInfo={collectionInfo}
+                            data={data}
+                            close={close}
+                            noCastPhoto={noCastPhoto}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </Popup>
+                </div>
+              )}
+
               <div id="list-wrap">
                 {data.data.map((result) => {
                   const url = result.poster_path

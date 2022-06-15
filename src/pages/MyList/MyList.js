@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./MyList.css";
 import { Link } from "react-router-dom";
-
 import { fetchCollectionMovies } from "../../utils/api";
 import { getMyCollections } from "../../utils/firebaseActions";
 import Popup from "reactjs-popup";

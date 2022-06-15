@@ -124,7 +124,7 @@ function App() {
           <Route exact path="/movie/:id">
             <MovieInfos uid={uid} />
           </Route>
-          <Route exact path="/movie-no-match">
+          <Route exact path="/movienotfound">
             <MovieNotFound />
           </Route>
           <Route exact path="/search/:query">

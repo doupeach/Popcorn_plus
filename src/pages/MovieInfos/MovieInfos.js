@@ -9,6 +9,7 @@ import { fetchMovie, fetchCast } from "../../utils/api";
 import { useParams, useHistory } from "react-router-dom";
 import AddToList from "../../components/AddToList/AddToList";
 import AddToCollection from "../../components/AddToCollection/AddToCollection";
+import Loading from "../../components/Loading/Loading";
 
 function MovieInfos({ uid }) {
   const { id } = useParams();
@@ -22,7 +23,7 @@ function MovieInfos({ uid }) {
     let directorName = "";
     castInfo.crew.forEach((crew) => {
       if (crew.job === "Director") {
-        directorName = crew.name
+        directorName = crew.name;
       }
     });
     return directorName;
@@ -56,9 +57,11 @@ function MovieInfos({ uid }) {
     let isMount = true;
     if (isMount) {
       fetchMovie(id).then((res) => {
-        if (res.status_code === 34) {
-          history.push("/movie-no-match");
+        console.log(res);
+        if (res.status_code === 34 || res.adult) {
+          history.push("/movienotfound");
         } else {
+          console.log("movie", res);
           setMovieDetail(res);
         }
       });
@@ -73,7 +76,8 @@ function MovieInfos({ uid }) {
     if (isMount) {
       fetchCast(id).then((res) => {
         if (res.status_code === 34) {
-          history.push("/no-match");
+          console.log("no cast");
+          return;
         } else {
           setCastInfo(res);
         }
@@ -91,7 +95,9 @@ function MovieInfos({ uid }) {
           <div className="movie-infos">
             <img
               className="movie-poster"
-              src={`https://image.tmdb.org/t/p/w1280/${movieDetail.backdrop_path || movieDetail.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w1280/${
+                movieDetail.backdrop_path || movieDetail.poster_path
+              }`}
               alt=""
             />
             <div className="information">
@@ -117,21 +123,25 @@ function MovieInfos({ uid }) {
 
               <div className="movie-story">{movieDetail.overview}</div>
             </div>
-            {castInfo?.crew.length !== 0 && <div className="director-title">Director</div>}
+            {castInfo?.crew.length !== 0 && (
+              <div className="director-title">Director</div>
+            )}
             {castInfo && (
               <div className="cast-card director-wrap">
                 <img className="cast-img" src={getDirectorImage()} alt="" />
                 <div className="director">{getDirector()}</div>
               </div>
             )}
-            {castInfo?.cast.length !== 0 && <div className="cast-title">Cast</div>}
+            {castInfo?.cast.length !== 0 && (
+              <div className="cast-title">Cast</div>
+            )}
             <div className="cast-list">
               {castInfo?.cast?.map((member) => {
                 const url = member.profile_path
                   ? `https://image.tmdb.org/t/p/w500${member.profile_path}`
                   : noCastPhoto;
                 return (
-                  <div className="cast-card">
+                  <div key={member.cast_id} className="cast-card">
                     <img className="cast-img" src={url} alt="" />
                     <p className="cast-name">{member.name}</p>
                     <p className="cast-character">{member.character}</p>
@@ -149,9 +159,7 @@ function MovieInfos({ uid }) {
           />
         </>
       ) : (
-        <div className="movie-not-found">
-          <div>Oops! Please try again!</div>
-        </div>
+        <Loading />
       )}
     </>
   );

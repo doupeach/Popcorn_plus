@@ -143,20 +143,20 @@ function Member({ uid }) {
                 </HeaderH2>
               </GlowTitle> */}
 
-              <GlowTitle filter={"drop-shadow(0 0 5px rgba(245, 130, 0, 1))"}>
-                <MemberPageButton
-                  backgroundColor={"transparent"}
-                  padding={"0px"}
-                  filter={"drop-shadow(0 0 5px rgba(245, 130, 0, 1))"}
-                >
-                  <Link to="/mylist">
+              <Link to="/mylist">
+                <GlowTitle filter={"drop-shadow(0 0 5px rgba(245, 130, 0, 1))"}>
+                  <MemberPageButton
+                    backgroundColor={"transparent"}
+                    padding={"0px"}
+                    filter={"drop-shadow(0 0 5px rgba(245, 130, 0, 1))"}
+                  >
                     <img src={listBtn} style={{ width: "35px" }} />
-                  </Link>
-                </MemberPageButton>
-                <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
-                  My List
-                </HeaderH2>
-              </GlowTitle>
+                  </MemberPageButton>
+                  <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
+                    My List
+                  </HeaderH2>
+                </GlowTitle>
+              </Link>
             </CardBtnDiv>
           </ProfileCardDiv>
           <LogoutButton

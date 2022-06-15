@@ -42,9 +42,6 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
     });
   }
 
-  console.log(listsData.id);
-  console.log(results);
-
   return (
     <>
       {results?.map((data) => {

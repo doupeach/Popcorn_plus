@@ -53,11 +53,11 @@
   margin-bottom: 30px;
 }
 
-.mylist-new-list{
+.mylist-new-list {
   display: flex;
 }
 
-.mylist-new-list svg{
+.mylist-new-list svg {
   margin-top: 70px;
   margin-left: 30px;
 }
@@ -133,5 +133,11 @@
 
   .mylist-poster {
     width: 140px;
+  }
+
+  .list-not-found {
+    padding: 9%;
+    line-height: 30px;
+    margin-top: 20px;
   }
 }

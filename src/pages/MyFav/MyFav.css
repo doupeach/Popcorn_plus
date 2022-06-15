@@ -1,0 +1,106 @@
+.myfav-result-container {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.myfav-result {
+  width: 100%;
+  height: calc(100vh - 155px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+
+.myfav-card {
+  width: 220px;
+  margin: 15px;
+}
+
+.myfav-poster {
+  width: 170px;
+}
+
+.myfav-card:hover .myfav-poster {
+  transform: scale(1.1);
+  transition: transform 500ms ease-in;
+}
+
+.myfav-title {
+  margin: 15px 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+#query {
+  color: white;
+  font-size: 25px;
+  margin-top: 120px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.no-list-movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 155px);
+}
+
+.no-list-movie div {
+  display: block;
+  color: #cacaca;
+  font-size: 1.4rem;
+  word-break: break-word;
+}
+
+#noMovieInList {
+  margin-bottom: 30px;
+
+  @media (max-width: 600px) {
+    height: 135px;
+    width: 240px;
+  }
+}
+
+#myfav-main-title {
+  color: white;
+  font-size: 28px;
+  margin: 100px 0px 30px 30px;
+}
+
+@media (max-width: 768px) {
+  #myfav-main-title {
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+
+  .myfav-result-container {
+    margin: 20px 0px;
+  }
+}
+
+@media (max-width: 425px) {
+  #myfav-main-title {
+    font-size: 24px;
+    width: 80%;
+  }
+
+  .myfav-card {
+    width: 150px;
+    margin: 10px;
+  }
+
+  .myfav-poster {
+    width: 140px;
+  }
+
+  .no-list-movie {
+    padding: 9%;
+    line-height: 30px;
+  }
+}

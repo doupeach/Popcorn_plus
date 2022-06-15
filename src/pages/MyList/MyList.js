@@ -19,25 +19,16 @@ const contentStyle = {
 const overlayStyle = { background: "rgba(0,0,0,0.5)" };
 const arrowStyle = { color: "#000" }; // style for an svg element
 
-function MyList({ uid, currentUserInfo }) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [collectionInfo, setCollectionInfo] = useState();
+function MyList({ uid, currentUserInfo, collectionInfo }) {
+  const [collections, setCollections] = useState(collectionInfo);
   const [lists, setLists] = useState();
   const [listsData, setListsData] = useState();
 
   useEffect(() => {
-    let isMounted = true;
-    if (isMounted) {
-      currentUserInfo &&
-        fetchCollectionMovies(currentUserInfo.my_list).then((movieInfo) => {
-          setCollectionInfo(movieInfo);
-          setIsLoading(false);
-        });
+    if (collectionInfo) {
+      setCollections(collectionInfo);
     }
-    return () => {
-      isMounted = false;
-    };
-  }, [currentUserInfo]);
+  }, [collectionInfo]);
 
   useEffect(() => {
     if (uid) {
@@ -55,21 +46,24 @@ function MyList({ uid, currentUserInfo }) {
         fetchCollectionMovies(data.list_data)
       );
       Promise.all(requests).then((res) => {
-        let newResults = Object.assign({}, { name: listNames, data: res, id:listIds, dataId: listDataIds });
+        let newResults = Object.assign(
+          {},
+          { name: listNames, data: res, id: listIds, dataId: listDataIds }
+        );
         setListsData(newResults);
       });
     }
   }, [lists]);
 
   // console.log(lists)
-  // console.log(collectionInfo)
+  // console.log(collectionInfo
   return (
     <>
-      {isLoading ? (
+      {!collectionInfo ? (
         <Loading />
       ) : (
         <>
-          {collectionInfo?.length > 0 ? (
+          {collections?.length > 0 ? (
             <div className="mylist-container">
               <div className="mylist-new-list">
                 <h2 id="mylist-name">List of "{currentUserInfo.name}"</h2>
@@ -98,11 +92,16 @@ function MyList({ uid, currentUserInfo }) {
                 </Popup>
               </div>
 
-              <SubList listsData={listsData} noCastPhoto={noCastPhoto} uid={uid} collectionInfo={collectionInfo}/>
+              <SubList
+                listsData={listsData}
+                noCastPhoto={noCastPhoto}
+                uid={uid}
+                collectionInfo={collections}
+              />
 
               <h2 id="mylist-name">All</h2>
               <div className="mylist-result">
-                {collectionInfo
+                {collections
                   ?.slice(0)
                   .reverse()
                   .map((result) => {

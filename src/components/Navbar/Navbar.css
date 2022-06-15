@@ -169,7 +169,8 @@ a:visited {
   }
 
   #navbar-link {
-    font-size: 12px;
+    font-size: 16px;
+    justify-content: space-between;
   }
 
   .search-container {

@@ -151,6 +151,7 @@ const Signin = ({ toggle, handleOnClick }) => {
           </div>
         </SocialContainer>
         <StyledSpan>press buttons above or use email to sign in</StyledSpan>
+
         <StyledInput
           type="email"
           placeholder="Email"

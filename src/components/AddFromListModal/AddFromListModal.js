@@ -18,9 +18,9 @@ function AddFromListModal({ uid, close, data, collectionInfo, noCastPhoto }) {
   const [movieIdArr, setMovieIdArr] = useState([...data.dataId]);
   const history = useHistory();
 
-  console.log("movieIdArr", movieIdArr);
-  //   console.log(collectionInfo);
-  //   console.log(newCollectionInfo);
+  // console.log("movieIdArr", movieIdArr);
+  // console.log(collectionInfo);
+  // console.log(newCollectionInfo);
   return (
     <div className="new-list-modal">
       <div className="create-new-list">Add movie from your list</div>
@@ -43,23 +43,23 @@ function AddFromListModal({ uid, close, data, collectionInfo, noCastPhoto }) {
                         ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
                         : noCastPhoto;
                       return (
-                          <div
-                            id="AF-search-card"
-                            className="search-card"
-                            key={result.id}
-                          >
-                        <Link to={`/movie/${result.id}`}>
+                        <div
+                          id="AF-search-card"
+                          className="search-card"
+                          key={result.id}
+                        >
+                          <Link to={`/movie/${result.id}`}>
                             <img className="search-poster" src={url} alt="" />
                             <div id="AF-search-title" className="search-title">
                               {result.original_title}
                             </div>
-                        </Link>
-                            <AddFromList
-                              uid={uid}
-                              data={data}
-                              movieId={result.id}
-                            />
-                          </div>
+                          </Link>
+                          <AddFromList
+                            uid={uid}
+                            data={data}
+                            movieId={result.id}
+                          />
+                        </div>
                       );
                     })}
                 </div>

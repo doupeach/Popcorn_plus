@@ -6,7 +6,7 @@ import searchLogo from "../../images/search_small.png";
 import favLogo from "../../images/favBtn.png";
 import deleteLogo from "../../images/deleteBtn.png";
 import memberLogo from "../../images/memberLogo.png";
-import { Link, useHistory,useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import AddToCollection from "../AddToCollection/AddToCollection";
 import { getRandomNewReleaseMovie } from "../../utils/api";
 
@@ -38,8 +38,8 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
   }
 
   function getRandomMovie() {
-    let idRange = 600000
-    history.push(`/movie/${getRandomNewReleaseMovie(idRange)}`)
+    let idRange = 600000;
+    history.push(`/movie/${getRandomNewReleaseMovie(idRange)}`);
   }
 
   return (
@@ -119,7 +119,9 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
         {!searchDisplay && (
           <img id="search" src={searchLogo} onClick={handleSearchDisplay} />
         )}
-        {/* <img id="fav" src={favLogo} /> */}
+        <Link to="/myfav">
+          <img id="fav" src={favLogo} />
+        </Link>
         <Link to="/login">
           <img id="member" src={memberLogo} />
         </Link>

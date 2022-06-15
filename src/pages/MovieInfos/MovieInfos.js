@@ -57,11 +57,9 @@ function MovieInfos({ uid }) {
     let isMount = true;
     if (isMount) {
       fetchMovie(id).then((res) => {
-        console.log(res);
         if (res.status_code === 34 || res.adult) {
           history.push("/movienotfound");
         } else {
-          console.log("movie", res);
           setMovieDetail(res);
         }
       });
@@ -76,7 +74,6 @@ function MovieInfos({ uid }) {
     if (isMount) {
       fetchCast(id).then((res) => {
         if (res.status_code === 34) {
-          console.log("no cast");
           return;
         } else {
           setCastInfo(res);

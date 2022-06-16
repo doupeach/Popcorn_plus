@@ -129,19 +129,21 @@ function Member({ uid }) {
             </HeaderH2>
 
             <CardBtnDiv justifyContent={"center"}>
-              {<GlowTitle>
-                <MemberPageButton
-                  backgroundColor={"transparent"}
-                  padding={"0px"}
-                >
-                  <Link to="/myfav">
-                    <img src={favLogo} style={{ width: "35px" }} />
-                  </Link>
-                </MemberPageButton>
-                <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
-                  Favorites
-                </HeaderH2>
-              </GlowTitle>}
+              <Link to="/myfav">
+                {
+                  <GlowTitle>
+                    <MemberPageButton
+                      backgroundColor={"transparent"}
+                      padding={"0px"}
+                    >
+                      <img src={favLogo} style={{ width: "35px" }} />
+                    </MemberPageButton>
+                    <HeaderH2 margin={"2% 20px 1% 5px;"} color={"#cacaca"}>
+                      Favorites
+                    </HeaderH2>
+                  </GlowTitle>
+                }
+              </Link>
 
               <Link to="/mylist">
                 <GlowTitle filter={"drop-shadow(0 0 5px rgba(245, 130, 0, 1))"}>

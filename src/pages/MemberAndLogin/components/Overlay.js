@@ -38,9 +38,6 @@ const OverlayContainer = styled.div`
 `;
 
 export const OverlayDiv = styled.div`
-  background: #ffb75e;
-  background: -webkit-linear-gradient(to right, #ed8f03, #ffb75e);
-  background: linear-gradient(to right, #ed8f03, #ffb75e);
   background-color: #d3d3d3;
   background-image: linear-gradient(315deg, #d3d3d3 0%, #57606f 74%);
   background-repeat: no-repeat;

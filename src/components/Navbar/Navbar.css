@@ -150,6 +150,67 @@ a:visited {
   margin-left: 20px;
 }
 
+#popcorn-card-container {
+  flex-direction: column;
+  position: absolute;
+  right:100px;
+  top:50px;
+  width: 380px;
+  height: 350px;
+  border-top: 3px solid #d3d3d3;
+  /* background-image: linear-gradient(315deg, #d3d3d3 0%, #57606f 74%); */
+  background-image: linear-gradient(315deg, rgb(22,21,21) 0%, #57606f 74%);
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding: 5px 0px;
+}
+
+.notdisplayed {
+  display: none;
+}
+
+.displayed {
+  display: flex;
+  height: 20px;
+  /* margin: auto; */
+}
+
+.popcorn-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 350px;
+  height: 200px;
+  border-bottom: 1px solid #d3d3d3;
+  background-image: linear-gradient(315deg, rgb(22,21,21) 0%, #57606f 74%);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+.popcorn-card-img{
+  width: 150px;
+}
+
+.title-date {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.popcorn-card-title{
+  font-size: 18px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.popcorn-card-date{
+  color: grey;
+}
+
 @media screen and (max-width: 768px) {
   #logo {
     display: none;

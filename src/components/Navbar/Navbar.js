@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Navbar.css";
 import logo from "../../images/Popcorn_logo.png";
 import mobileLogo from "../../images/P+.png";
@@ -11,8 +11,20 @@ import AddToCollection from "../AddToCollection/AddToCollection";
 import { getRandomNewReleaseMovie } from "../../utils/api";
 import { swalLoginModal } from "../../utils/swalModal";
 
-function Navbar({ user, searchDisplay, setSearchDisplay }) {
+function Navbar({ user, searchDisplay, setSearchDisplay, favInfo }) {
   const [searchInputValue, setSearchInputValue] = useState("");
+  const [display, setDisplay] = useState("notdisplayed");
+
+  const showButton = (e) => {
+    e.preventDefault();
+    setDisplay("displayed");
+  };
+
+  const hideButton = (e) => {
+    e.preventDefault();
+    setDisplay("notdisplayed");
+  };
+
   const history = useHistory();
 
   function handleSearchDisplay() {
@@ -51,24 +63,18 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
     }
   }
 
+  function toMainPage() {
+    history.push("/");
+  }
+
+  console.log(favInfo);
+  console.log(display);
   return (
     <div className="navbar">
       <div id="logo-wrap">
-        <img
-          id="logo"
-          src={logo}
-          onClick={() => {
-            history.push("/");
-          }}
-        />
+        <img id="logo" src={logo} onClick={toMainPage} />
 
-        <img
-          id="mobile-logo"
-          src={mobileLogo}
-          onClick={() => {
-            history.push("/");
-          }}
-        />
+        <img id="mobile-logo" src={mobileLogo} onClick={toMainPage} />
       </div>
       <div id="navbar-link">
         <Link to="/">
@@ -109,6 +115,7 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
                 onKeyPress={keyPressSearch}
                 onClick={handleClearInput}
               />
+
               <button className="delete-button">
                 {searchInputValue && (
                   <img
@@ -129,12 +136,51 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
           <img id="search" src={searchLogo} onClick={handleSearchDisplay} />
         )}
 
-          <img id="fav" src={favLogo} onClick={handleVisitMyFav}/>
+        <img
+          id="fav"
+          src={favLogo}
+          onClick={handleVisitMyFav}
+          onMouseEnter={(e) => showButton(e)}
+          onMouseLeave={(e) => hideButton(e)}
+        />
 
         <Link to="/login">
           <img id="member" src={memberLogo} />
         </Link>
       </div>
+
+      {favInfo && (
+        <div
+          className={display}
+          id="popcorn-card-container"
+          onMouseEnter={(e) => showButton(e)}
+          onMouseLeave={(e) => hideButton(e)}
+        >
+          {favInfo?.map((data) => {
+            console.log(data);
+            return (
+              <Link
+                className="popcorn-card"
+                to={`/movie/${data.id}`}
+                key={data.id}
+              >
+                <img
+                  className="popcorn-card-img"
+                  src={
+                    data.image
+                      ? data.image
+                      : `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
+                  }
+                />
+                <div className="title-date">
+                  <div className="popcorn-card-title">{data.title}</div>
+                  <div className="popcorn-card-date">{data.release_date}</div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

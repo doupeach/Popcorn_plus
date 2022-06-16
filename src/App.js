@@ -30,7 +30,6 @@ function App() {
   const [currentUserInfo, setCurrentUserInfo] = useState(); //儲存uid，要改成redux
   const [collectionInfo, setCollectionInfo] = useState();
   const [favInfo, setFavInfo] = useState();
-
   const [userList, setUserList] = useState([]); // 所有user的資料
   const [isLogin, setIsLogin] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -108,6 +107,7 @@ function App() {
           user={user}
           searchDisplay={searchDisplay}
           setSearchDisplay={setSearchDisplay}
+          favInfo={favInfo}
         />
 
         <Switch>

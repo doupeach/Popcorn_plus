@@ -46,6 +46,8 @@ function MovieInfos({ uid }) {
     if (movieDetail && isMount) {
       if (movieDetail.videos?.results.length > 0) {
         setTrailerKey(movieDetail.videos.results[0].key);
+      } else {
+        setTrailerKey(undefined);
       }
       return () => {
         isMount = false; // 清除fetchAPI
@@ -101,10 +103,12 @@ function MovieInfos({ uid }) {
               <div className="movie-title">{movieDetail.title}</div>
               <div className="movie-date">{movieDetail.release_date}</div>
               <div className="action-btns">
-                <div id="trailerBtn" onClick={() => setOpen(true)}>
-                  <img id="detail-playBtn" src={playBtn} alt="" />
-                  TRAILER
-                </div>
+                {trailerKey && (
+                  <div id="trailerBtn" onClick={() => setOpen(true)}>
+                    <img id="detail-playBtn" src={playBtn} alt="" />
+                    TRAILER
+                  </div>
+                )}
 
                 <div id="infoPlus">
                   <AddToList uid={uid} movieId={parseInt(movieDetail.id, 10)} />

@@ -9,6 +9,7 @@ import memberLogo from "../../images/memberLogo.png";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import AddToCollection from "../AddToCollection/AddToCollection";
 import { getRandomNewReleaseMovie } from "../../utils/api";
+import { swalLoginModal } from "../../utils/swalModal";
 
 function Navbar({ user, searchDisplay, setSearchDisplay }) {
   const [searchInputValue, setSearchInputValue] = useState("");
@@ -42,6 +43,14 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
     history.push(`/movie/${getRandomNewReleaseMovie(idRange)}`);
   }
 
+  function handleVisitMyFav() {
+    if (!user) {
+      swalLoginModal("visit my favorites!");
+    } else {
+      history.push("/myfav");
+    }
+  }
+
   return (
     <div className="navbar">
       <div id="logo-wrap">
@@ -70,7 +79,7 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
           Surprise me!
         </div>
 
-        {user !== null ? (
+        {user ? (
           <Link to="/mylist">
             <div className="mylist-link">My List</div>
           </Link>
@@ -119,9 +128,9 @@ function Navbar({ user, searchDisplay, setSearchDisplay }) {
         {!searchDisplay && (
           <img id="search" src={searchLogo} onClick={handleSearchDisplay} />
         )}
-        <Link to="/myfav">
-          <img id="fav" src={favLogo} />
-        </Link>
+
+          <img id="fav" src={favLogo} onClick={handleVisitMyFav}/>
+
         <Link to="/login">
           <img id="member" src={memberLogo} />
         </Link>

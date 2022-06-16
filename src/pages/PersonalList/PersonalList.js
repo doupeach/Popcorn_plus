@@ -21,7 +21,6 @@ function PersonalList() {
     };
   }, [data]);
 
-  // console.log(data);
   return (
     <>
       {isLoading ? (

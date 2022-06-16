@@ -46,11 +46,6 @@ function Home({ uid, collectionInfo }) {
     };
   }, [movieData]);
 
-  // console.log("upcomingMovie", upcomingMovie);
-  // console.log("newReleaseMovie", newReleaseMovie);
-  // console.log("movieData", movieData);
-  // console.log("trailerKey", trailerKey);
-
   return (
     <div className="Home">
       <Banner movieData={movieData} trailerKey={trailerKey} uid={uid} />

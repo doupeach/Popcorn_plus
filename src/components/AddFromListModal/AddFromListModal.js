@@ -18,9 +18,6 @@ function AddFromListModal({ uid, close, data, collectionInfo, noCastPhoto }) {
   const [movieIdArr, setMovieIdArr] = useState([...data.dataId]);
   const history = useHistory();
 
-  // console.log("movieIdArr", movieIdArr);
-  // console.log(collectionInfo);
-  // console.log(newCollectionInfo);
   return (
     <div className="new-list-modal">
       <div className="create-new-list">Add movie from your list</div>

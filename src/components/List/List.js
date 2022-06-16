@@ -22,9 +22,6 @@ function List({ listGenre, listData, collectionInfo, uid }) {
     });
   };
 
-  // console.log(listData);
-  // console.log(collectionInfo);
-
   useEffect(() => {
     collectionInfo
       ? setDataArr(collectionInfo.slice(0).reverse())

@@ -55,8 +55,6 @@ function MyList({ uid, currentUserInfo, collectionInfo }) {
     }
   }, [lists]);
 
-  // console.log(lists)
-  // console.log(collectionInfo
   return (
     <>
       {!collectionInfo ? (

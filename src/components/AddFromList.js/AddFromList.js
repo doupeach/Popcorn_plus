@@ -59,10 +59,7 @@ export default function AddFromList({ uid, data, movieId }) {
       });
     }
   }
-//   console.log(uid);
-//   console.log(data.id);
-//   console.log(movieId);
-//   console.log(collected)
+  
   return (
     <>
       {collected ? (

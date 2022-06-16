@@ -101,12 +101,6 @@ function App() {
     };
   }, [currentUserInfo]);
 
-  // console.log(uid);
-  // console.log(user);
-  // console.log(userList);
-  // console.log(currentUserInfo);
-  console.log(favInfo);
-
   return (
     <BrowserRouter>
       <ScrollToTop>

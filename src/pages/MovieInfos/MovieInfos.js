@@ -9,6 +9,7 @@ import { fetchMovie, fetchCast } from "../../utils/api";
 import { useParams, useHistory } from "react-router-dom";
 import AddToList from "../../components/AddToList/AddToList";
 import AddToCollection from "../../components/AddToCollection/AddToCollection";
+import Shares from "../../components/Shares/Shares";
 import Loading from "../../components/Loading/Loading";
 
 function MovieInfos({ uid }) {
@@ -120,6 +121,8 @@ function MovieInfos({ uid }) {
                     movieId={parseInt(movieDetail.id, 10)}
                   />
                 </div>
+
+                <Shares id="sns-shares"/>
               </div>
 
               <div className="movie-story">{movieDetail.overview}</div>

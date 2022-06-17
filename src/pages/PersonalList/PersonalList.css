@@ -89,6 +89,10 @@
   margin-left: 10px;
 }
 
+#list-shares {
+  margin-left: 20px;
+}
+
 @media (max-width: 768px) {
   #query {
     margin-top: 60px;
@@ -113,5 +117,33 @@
 
   .search-poster {
     width: 140px;
+  }
+
+  #list-shares div {
+    width: 140px;
+    margin-top: 0px;
+    margin-left: 20px;
+    top: 0;
+  }
+  #list-shares svg:last-child {
+    margin-top: 0px;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  #list-shares {
+    margin-left: -10px;
+    width: 200px;
+  }
+  #list-shares div {
+    width: 140px;
+    margin-top: 0px;
+    margin-left: 30px;
+  }
+
+  #list-shares svg:last-child {
+    margin-top: 0px;
+    margin-left: 20px;
   }
 }

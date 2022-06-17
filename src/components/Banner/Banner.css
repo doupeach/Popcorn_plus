@@ -1,4 +1,3 @@
-
 .banner {
   width: 100%;
   height: 100vh;
@@ -41,6 +40,10 @@
   bottom: 200px;
   color: white;
   font-size: 34px;
+}
+
+#movie-title:hover {
+  text-shadow: 2px 2px 2px white;
 }
 
 #movie-release-date {
@@ -124,7 +127,6 @@
 }
 
 @media (max-width: 375px) {
-
   #banner-btn {
     bottom: 47%;
     padding: 6px 30px;

@@ -5,6 +5,7 @@ import noCastPhoto from "../../images/cast-default-photo.png";
 import Loading from "../../components/Loading/Loading";
 import { getDocumentRef } from "../../utils/firebaseActions";
 import { fetchCollectionMovies } from "../../utils/api";
+import Shares from "../../components/Shares/Shares";
 
 function PersonalList() {
   const { id } = useParams();
@@ -41,7 +42,7 @@ function PersonalList() {
         <>
           {listData.length !== 0 && owner ? (
             <div className="search-result-container">
-              <h2 id="query">{lists.list_name}</h2>
+              <h2 id="query">{lists.list_name} </h2>
               <div className="profile">
                 <img
                   className="owner-photo"
@@ -49,6 +50,9 @@ function PersonalList() {
                   alt="owner-photo"
                 />
                 <h2 id="owner">{owner?.name}</h2>
+                <div id="list-shares">
+                  <Shares />
+                </div>
               </div>
               <div className="search-result">
                 {listData.map((result) => {

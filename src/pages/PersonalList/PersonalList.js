@@ -1,25 +1,37 @@
 import React, { useState, useEffect } from "react";
 import "./PersonalList.css";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import noCastPhoto from "../../images/cast-default-photo.png";
 import Loading from "../../components/Loading/Loading";
+import { getDocumentRef } from "../../utils/firebaseActions";
+import { fetchCollectionMovies } from "../../utils/api";
 
 function PersonalList() {
-  const {
-    state: { data },
-  } = useLocation();
   const { id } = useParams();
+  const [lists, setLists] = useState();
+  const [listData, setListData] = useState();
+  const [owner, setOwner] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    let isMounted = true;
-    if (isMounted) {
-      setIsLoading(false);
+    getDocumentRef("lists", id).onSnapshot((doc) => {
+      setLists(doc.data());
+    });
+  }, []);
+
+  useEffect(() => {
+    if (lists) {
+      fetchCollectionMovies(lists.list_data).then((movies) => {
+        setListData(movies);
+        setIsLoading(false);
+      });
+      getDocumentRef("users", lists.owner)
+        .get()
+        .then((doc) => {
+          setOwner(doc.data());
+        });
     }
-    return () => {
-      isMounted = false;
-    };
-  }, [data]);
+  }, [lists]);
 
   return (
     <>
@@ -27,12 +39,19 @@ function PersonalList() {
         <Loading />
       ) : (
         <>
-          {data.data.length !== 0 ? (
+          {listData.length !== 0 && owner ? (
             <div className="search-result-container">
-              <h2 id="query">{data.name}</h2>
-
+              <h2 id="query">{lists.list_name}</h2>
+              <div className="profile">
+                <img
+                  className="owner-photo"
+                  src={owner?.photoUrl}
+                  alt="owner-photo"
+                />
+                <h2 id="owner">{owner?.name}</h2>
+              </div>
               <div className="search-result">
-                {data.data.map((result) => {
+                {listData.map((result) => {
                   const url = result.poster_path
                     ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
                     : noCastPhoto;
@@ -54,9 +73,9 @@ function PersonalList() {
             </div>
           ) : (
             <div className="search-result-container">
-              <h2 id="query">{data.name}</h2>
+              <h2 id="query">{lists.list_name}</h2>
               <div className="no-list-movie">
-                <div>Your did not have any movie in the list.</div>
+                <div>There's no any movie in the list.</div>
               </div>
             </div>
           )}

@@ -29,16 +29,30 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
       };
     });
   }, [listsData]);
-  const location = useLocation();
+
   function handleDeleteList(id) {
-    deleteDoc("lists", id);
     Swal.fire({
-      title: "Deleted!",
-      icon: "success",
-      button: false,
-      timer: 1500,
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#2f4861",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
       background:
         "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteDoc("lists", id);
+        Swal.fire({
+          title: "Deleted!",
+          icon: "success",
+          button: false,
+          timer: 1500,
+          background:
+            "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
+        });
+      }
     });
   }
 
@@ -49,10 +63,10 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
           <div>
             <div className="mylist-new-list" id="mobile-mylist-new-list">
               <Link
-                to={{ pathname: `/mylist/${data.id}`, state: { data } }}
+                to={{ pathname: `/movielist/${data.id}`, state: { data } }}
                 key={data.id}
               >
-                <h2 id="mylist-name">{data.name}</h2>
+                <h2 id="mylist-name" className="sub-mylist-name">{data.name}</h2>
               </Link>
 
               <RiDeleteBin2Fill
@@ -126,24 +140,27 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
               )}
 
               <div id="list-wrap">
-                {data.data.map((result) => {
-                  const url = result.poster_path
-                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
-                    : noCastPhoto;
-                  return (
-                    <Link to={`/movie/${result.id}`} key={result.id}>
-                      <div className="mylist-card">
-                        <img className="mylist-poster" src={url} alt="" />
-                        <div className="mylist-title">
-                          {result.original_title}
+                {data.data
+                  .slice(0)
+                  .reverse()
+                  .map((result) => {
+                    const url = result.poster_path
+                      ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                      : noCastPhoto;
+                    return (
+                      <Link to={`/movie/${result.id}`} key={result.id}>
+                        <div className="mylist-card">
+                          <img className="mylist-poster" src={url} alt="" />
+                          <div className="mylist-title">
+                            {result.original_title}
+                          </div>
+                          <div className="mylist-rating">
+                            {result.vote_average}
+                          </div>
                         </div>
-                        <div className="mylist-rating">
-                          {result.vote_average}
-                        </div>
-                      </div>
-                    </Link>
-                  );
-                })}
+                      </Link>
+                    );
+                  })}
               </div>
             </div>
           </div>

@@ -67,8 +67,6 @@ function Navbar({ user, searchDisplay, setSearchDisplay, favInfo }) {
     history.push("/");
   }
 
-  console.log(favInfo);
-  console.log(display);
   return (
     <div className="navbar">
       <div id="logo-wrap">
@@ -156,29 +154,31 @@ function Navbar({ user, searchDisplay, setSearchDisplay, favInfo }) {
           onMouseEnter={(e) => showButton(e)}
           onMouseLeave={(e) => hideButton(e)}
         >
-          {favInfo?.map((data) => {
-            console.log(data);
-            return (
-              <Link
-                className="popcorn-card"
-                to={`/movie/${data.id}`}
-                key={data.id}
-              >
-                <img
-                  className="popcorn-card-img"
-                  src={
-                    data.image
-                      ? data.image
-                      : `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
-                  }
-                />
-                <div className="title-date">
-                  <div className="popcorn-card-title">{data.title}</div>
-                  <div className="popcorn-card-date">{data.release_date}</div>
-                </div>
-              </Link>
-            );
-          })}
+          {favInfo
+            ?.slice(0)
+            .reverse()
+            .map((data) => {
+              return (
+                <Link
+                  className="popcorn-card"
+                  to={`/movie/${data.id}`}
+                  key={data.id}
+                >
+                  <img
+                    className="popcorn-card-img"
+                    src={
+                      data.image
+                        ? data.image
+                        : `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
+                    }
+                  />
+                  <div className="title-date">
+                    <div className="popcorn-card-title">{data.title}</div>
+                    <div className="popcorn-card-date">{data.release_date}</div>
+                  </div>
+                </Link>
+              );
+            })}
         </div>
       )}
     </div>

@@ -147,8 +147,8 @@ function App() {
             )}
           </Route>
 
-          <Route exact path="/mylist/:id">
-            {user !== null ? <PersonalList /> : <Redirect to="/login" />}
+          <Route exact path="/movielist/:id">
+            <PersonalList />
           </Route>
 
           <Route exact path="/movie/:id">

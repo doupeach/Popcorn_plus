@@ -49,3 +49,13 @@
 #AF-search-title{
   font-size: 15px;
 }
+
+@media(max-width:425px){
+  .new-list-modal {
+    height: 70vh;
+  }
+
+  .new-list-input{
+    width: 70%;
+  }
+}

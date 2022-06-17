@@ -30,3 +30,12 @@
   font-size: 15px;
   cursor: pointer;
 }
+
+@media (max-width: 425px) {
+  .new-list-modal .new-list-content {
+    width: 70vw;
+  }
+  .new-list-modal .new-list-close {
+    right: -50px;
+  }
+}

@@ -119,6 +119,11 @@
     width: 140px;
   }
 
+  #list-shares {
+    margin-left: 20px;
+    position: absolute;
+    left: 36%;
+  }
   #list-shares div {
     width: 140px;
     margin-top: 0px;
@@ -133,9 +138,9 @@
 
 @media (max-width: 400px) {
   #list-shares {
-    margin-left: -10px;
-    width: 200px;
+    left: 25%;
   }
+
   #list-shares div {
     width: 140px;
     margin-top: 0px;

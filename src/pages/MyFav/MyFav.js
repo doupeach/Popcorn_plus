@@ -21,27 +21,32 @@ function MyFav({ favInfo, currentUserInfo, uid }) {
         <>
           {favs?.length !== 0 ? (
             <div className="myfav-result-container">
-              <h2 id="myfav-main-title">Favorites of "{currentUserInfo.name}"</h2>
+              <h2 id="myfav-main-title">
+                Favorites of "{currentUserInfo.name}"
+              </h2>
 
               <div className="myfav-result">
-                {favs?.map((result) => {
-                  const url = result.poster_path
-                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
-                    : noCastPhoto;
-                  return (
-                    <Link to={`/movie/${result.id}`} key={result.id}>
-                      <div className="myfav-card">
-                        <img className="myfav-poster" src={url} alt="" />
-                        <div className="myfav-title">
-                          {result.original_title}
+                {favs
+                  ?.slice(0)
+                  .reverse()
+                  .map((result) => {
+                    const url = result.poster_path
+                      ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                      : noCastPhoto;
+                    return (
+                      <Link to={`/movie/${result.id}`} key={result.id}>
+                        <div className="myfav-card">
+                          <img className="myfav-poster" src={url} alt="" />
+                          <div className="myfav-title">
+                            {result.original_title}
+                          </div>
+                          <div className="myfav-rating">
+                            {result.vote_average}
+                          </div>
                         </div>
-                        <div className="myfav-rating">
-                          {result.vote_average}
-                        </div>
-                      </div>
-                    </Link>
-                  );
-                })}
+                      </Link>
+                    );
+                  })}
               </div>
             </div>
           ) : (

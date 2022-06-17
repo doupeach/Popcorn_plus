@@ -147,7 +147,7 @@ function Navbar({ user, searchDisplay, setSearchDisplay, favInfo }) {
         </Link>
       </div>
 
-      {favInfo && (
+      {favInfo?.length && (
         <div
           className={display}
           id="popcorn-card-container"

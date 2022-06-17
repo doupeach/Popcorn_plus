@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./MyFav.css";
 import { Link } from "react-router-dom";
-import { fetchmyfav } from "../../utils/api";
 import noCastPhoto from "../../images/cast-default-photo.png";
 import Loading from "../../components/Loading/Loading";
 

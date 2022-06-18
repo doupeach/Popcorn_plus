@@ -15,12 +15,14 @@ import { userLogout, getUserPhotoRef } from "../../utils/firebaseActions";
 import favLogo from "../../images/favBtn.png";
 import Loading from "../../components/Loading/Loading";
 import listBtn from "../../images/listBtn.png";
+import { useSelector } from "react-redux";
 
 function Member({ uid }) {
   const db = firebase.firestore();
   const userRef = db.collection("users");
 
-  const [currentUser, setCurrentUser] = useState(null);
+  // const [currentUser, setCurrentUser] = useState(null);
+  const currentUser = useSelector((state) => state.currentUser);
   const [isLoading, setIsLoading] = useState(false);
   const [file, setFile] = useState(null);
 
@@ -28,16 +30,16 @@ function Member({ uid }) {
   const defaultUserPhotoUrl = `https://firebasestorage.googleapis.com/v0/b/popcorn-plus.appspot.com/o/NFT-CAT.png?alt=media&token=752f151d-026e-451b-a61f-b9ff78180767`;
 
   // 對currentUser的doc作監聽
-  useEffect(() => {
-    if (uid) {
-      const unsubscribe = userRef.doc(uid).onSnapshot((doc) => {
-        setCurrentUser(doc.data());
-      });
-      return () => {
-        unsubscribe();
-      };
-    }
-  }, [uid]);
+  // useEffect(() => {
+  //   if (uid) {
+  //     const unsubscribe = userRef.doc(uid).onSnapshot((doc) => {
+  //       setCurrentUser(doc.data());
+  //     });
+  //     return () => {
+  //       unsubscribe();
+  //     };
+  //   }
+  // }, [uid]);
 
   const previewUrl = () => {
     if (file) {

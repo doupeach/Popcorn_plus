@@ -10,6 +10,7 @@ import Loading from "../../components/Loading/Loading";
 import noCastPhoto from "../../images/cast-default-photo.png";
 import NewListModal from "../../components/NewListModal/NewListModal";
 import SubList from "../../components/SubList/SubList";
+import { useSelector } from "react-redux";
 
 const contentStyle = {
   background: "rgb(22, 21, 21)",
@@ -19,10 +20,11 @@ const contentStyle = {
 const overlayStyle = { background: "rgba(0,0,0,0.5)" };
 const arrowStyle = { color: "#000" }; // style for an svg element
 
-function MyList({ uid, currentUserInfo, collectionInfo }) {
+function MyList({ collectionInfo }) {
   const [collections, setCollections] = useState(collectionInfo);
   const [lists, setLists] = useState();
   const [listsData, setListsData] = useState();
+  const currentUserInfo = useSelector((state) => state.currentUserInfo);
 
   useEffect(() => {
     if (collectionInfo) {
@@ -31,11 +33,11 @@ function MyList({ uid, currentUserInfo, collectionInfo }) {
   }, [collectionInfo]);
 
   useEffect(() => {
-    if (uid) {
-      const unsub = getMyCollections("lists", uid, setLists);
+    if (currentUserInfo?.uid) {
+      const unsub = getMyCollections("lists", currentUserInfo.uid, setLists);
       return unsub;
     }
-  }, [uid]);
+  }, [currentUserInfo]);
 
   useEffect(() => {
     if (lists) {
@@ -55,6 +57,8 @@ function MyList({ uid, currentUserInfo, collectionInfo }) {
     }
   }, [lists]);
 
+  console.log(currentUserInfo)
+  console.log(collectionInfo)
   return (
     <>
       {!collectionInfo ? (
@@ -83,7 +87,7 @@ function MyList({ uid, currentUserInfo, collectionInfo }) {
                         &times;
                       </button>
                       <div className="new-list-content">
-                        <NewListModal uid={uid} close={close} />
+                        <NewListModal uid={currentUserInfo.uid} close={close} />
                       </div>
                     </div>
                   )}
@@ -93,7 +97,7 @@ function MyList({ uid, currentUserInfo, collectionInfo }) {
               <SubList
                 listsData={listsData}
                 noCastPhoto={noCastPhoto}
-                uid={uid}
+                uid={currentUserInfo.uid}
                 collectionInfo={collections}
               />
 

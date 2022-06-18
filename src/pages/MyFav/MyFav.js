@@ -3,9 +3,11 @@ import "./MyFav.css";
 import { Link } from "react-router-dom";
 import noCastPhoto from "../../images/cast-default-photo.png";
 import Loading from "../../components/Loading/Loading";
+import { useSelector } from "react-redux";
 
-function MyFav({ favInfo, currentUserInfo, uid }) {
+function MyFav({ favInfo }) {
   const [favs, setFavs] = useState(favInfo);
+  const currentUserInfo = useSelector((state) => state.currentUserInfo);
 
   useEffect(() => {
     if (favInfo) {

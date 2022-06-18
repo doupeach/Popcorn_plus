@@ -20,14 +20,18 @@ import NotFound from "./pages/NotFound/NotFound";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
 import MovieNotFound from "./pages/MovieNotFound/MovieNotFound";
 import PersonalList from "./pages/PersonalList/PersonalList";
+import { useDispatch,useSelector } from "react-redux";
+import { getCurrentUserInfo } from "./redux/action";
+import { getIsLogin } from "./redux/action";
 
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const db = firebase.firestore();
   const userRef = db.collection("users");
   const [uid, setUid] = useState(); //儲存uid，要改成redux
   const [user, setUser] = useState(); //儲存uid，要改成redux
-  const [currentUserInfo, setCurrentUserInfo] = useState(); //儲存uid，要改成redux
+  // const [currentUserInfo, setCurrentUserInfo] = useState(); //儲存uid，要改成redux
+  const currentUserInfo = useSelector((state) => state.currentUserInfo);
   const [collectionInfo, setCollectionInfo] = useState();
   const [favInfo, setFavInfo] = useState();
 
@@ -42,8 +46,10 @@ function App() {
       if (currentUser) {
         setUid(currentUser.uid);
         setIsLogin(true);
+        dispatch(getIsLogin(true));
       } else {
         setIsLogin(false);
+        dispatch(getIsLogin(false));
       }
     });
   }, []);
@@ -58,9 +64,10 @@ function App() {
   useEffect(() => {
     uid &&
       userRef.doc(uid).onSnapshot((doc) => {
-        setCurrentUserInfo(doc.data());
+        // setCurrentUserInfo(doc.data());
+        dispatch(getCurrentUserInfo(doc.data()));
       });
-  }, [uid]);
+  }, [uid, userRef, dispatch]);
 
   useEffect(() => {
     let isMounted = true;

@@ -31,12 +31,13 @@ export default function AddToCollection({ uid, movieId }) {
         user_collection: firebase.firestore.FieldValue.arrayRemove(movieId),
       });
       setCollected(false);
-      Swal.fire( {
-        title:"Removed from favorites!",
+      Swal.fire({
+        title: "Removed from favorites!",
         icon: "success",
         button: false,
         timer: 1500,
-        background: 'radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )',
+        background:
+          "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
       });
     } else {
       // add
@@ -49,32 +50,36 @@ export default function AddToCollection({ uid, movieId }) {
         icon: "success",
         button: false,
         timer: 1500,
-        background: 'radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )',
+        background:
+          "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
       });
     }
   }
 
   return (
     <>
-      <Icon
-        src={favLogo}
-        onClick={() => clickAdd(movieId)}
-        collected={collected}
-      />
+
+        <Icon
+          src={favLogo}
+          onClick={() => clickAdd(movieId)}
+          collected={collected}
+        />
+      
     </>
   );
 }
 
-
-
 const Icon = styled.img`
   color: ${(props) => (props.collected ? Color.Main : Color.Content)};
-  filter: ${(props) => (props.collected ? 'drop-shadow(0 0 5px rgba(255, 0, 0, 1))' : 'drop-shadow(1px 1px 10px rgba(0, 0, 0, .5))')};
+  filter: ${(props) =>
+    props.collected
+      ? "drop-shadow(0 0 5px rgba(255, 0, 0, 1))"
+      : "drop-shadow(1px 1px 10px rgba(0, 0, 0, .5))"};
   font-size: 2rem;
   cursor: pointer;
-  transition: .3s ease;
+  transition: 0.3s ease;
   &:hover {
-    webkitFilter: drop-shadow(0 0 5px rgba(255, 0, 0, 1));
+    webkitfilter: drop-shadow(0 0 5px rgba(255, 0, 0, 1));
     filter: drop-shadow(0 0 5px rgba(255, 0, 0, 1));
   }
 `;

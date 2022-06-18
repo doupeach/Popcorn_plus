@@ -52,8 +52,8 @@ function Member({ uid }) {
   const toLogOut = () => {
     setIsLoading(true);
     userLogout();
-    history.push("/login");
     setIsLoading(false);
+    history.push("/");
   };
 
   function onSubmit() {

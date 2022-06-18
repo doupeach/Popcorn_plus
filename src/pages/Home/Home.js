@@ -4,7 +4,7 @@ import List from "../../components/List/List";
 import { fetchUpcomingNewRelease, fetchMovie } from "../../utils/api";
 import { getRandomNewReleaseMovie } from "../../utils/api";
 
-function Home({ uid, collectionInfo }) {
+function Home({ user, uid, collectionInfo }) {
   const [upcomingMovie, setUpComingMovie] = useState();
   const [newReleaseMovie, setNewReleaseMovie] = useState();
   const [movieData, setMovieData] = useState();
@@ -51,7 +51,7 @@ function Home({ uid, collectionInfo }) {
       <Banner movieData={movieData} trailerKey={trailerKey} uid={uid} />
       <List listGenre={"Upcoming"} listData={upcomingMovie} uid={uid} />
       <List listGenre={"New Releases"} listData={newReleaseMovie} uid={uid} />
-      {uid ? (
+      {user ? (
         <List listGenre={"My List"} collectionInfo={collectionInfo} uid={uid}/>
       ) : (
         ""

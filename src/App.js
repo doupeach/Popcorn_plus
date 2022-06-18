@@ -30,7 +30,7 @@ function App() {
   const [currentUserInfo, setCurrentUserInfo] = useState(); //儲存uid，要改成redux
   const [collectionInfo, setCollectionInfo] = useState();
   const [favInfo, setFavInfo] = useState();
-  const [userList, setUserList] = useState([]); // 所有user的資料
+
   const [isLogin, setIsLogin] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [searchDisplay, setSearchDisplay] = useState(false);
@@ -49,19 +49,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    userRef
-      .get()
-      .then((snapshot) => {
-        let userArr = [];
-        snapshot.docs.forEach((user) => {
-          userArr.push(user.data());
-        });
-        setUserList(userArr);
-      })
-      .catch((err) => {
-        console.err(err);
-      });
-  }, []);
+    if (!user) {
+      setUid(undefined);
+      setFavInfo(undefined);
+    }
+  }, [user]);
 
   useEffect(() => {
     uid &&
@@ -112,7 +104,7 @@ function App() {
 
         <Switch>
           <Route path="/" exact>
-            <Home uid={uid} collectionInfo={collectionInfo} />
+            <Home user={user} uid={uid} collectionInfo={collectionInfo} />
           </Route>
 
           <Route path="/login" exact>

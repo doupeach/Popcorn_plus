@@ -148,6 +148,7 @@ a:visited {
   display: none;
   height: 35px;
   margin-left: 20px;
+  cursor: pointer;
 }
 
 #popcorn-card-container {

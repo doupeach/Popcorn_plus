@@ -22,7 +22,7 @@ function Member({ uid }) {
   const userRef = db.collection("users");
 
   // const [currentUser, setCurrentUser] = useState(null);
-  const currentUser = useSelector((state) => state.currentUser);
+  const currentUser = useSelector((state) => state.currentUserInfo);
   const [isLoading, setIsLoading] = useState(false);
   const [file, setFile] = useState(null);
 

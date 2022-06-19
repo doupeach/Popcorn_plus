@@ -33,8 +33,8 @@ function List({ listGenre, listData, collectionInfo, uid }) {
       <div id="list-name">{listGenre}</div>
       <div className="list">
         {dataArr?.map((data) => (
-          <>
-            <div key={data.id} id="card">
+          <div key={data.id}>
+            <div id="card">
               <Link to={`/movie/${data.id}`}>
                 <img
                   id="card-img"
@@ -60,8 +60,12 @@ function List({ listGenre, listData, collectionInfo, uid }) {
                     />
                   </div>
                   <div id="playBtn" onClick={() => handleClickPlay(data.id)}>
-                    <BsPlayCircle color={"#FFF"} size={'30px'} id="bs-play" />
-                    <BsPlayCircleFill color={"#FFF"} size={'32.5px'} id="bs-play-fill" />
+                    <BsPlayCircle color={"#FFF"} size={"30px"} id="bs-play" />
+                    <BsPlayCircleFill
+                      color={"#FFF"}
+                      size={"32.5px"}
+                      id="bs-play-fill"
+                    />
                   </div>
                 </div>
                 <Link to={`/movie/${data.id}`}>
@@ -71,7 +75,7 @@ function List({ listGenre, listData, collectionInfo, uid }) {
                 <h4>{data.vote_average}</h4>
               </div>
             </div>
-          </>
+          </div>
         ))}
         <ModalVideo
           channel="youtube"

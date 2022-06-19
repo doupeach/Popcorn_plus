@@ -20,7 +20,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
 import MovieNotFound from "./pages/MovieNotFound/MovieNotFound";
 import PersonalList from "./pages/PersonalList/PersonalList";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getCurrentUserInfo } from "./redux/action";
 import { getIsLogin } from "./redux/action";
 
@@ -28,27 +28,20 @@ function App() {
   const dispatch = useDispatch();
   const db = firebase.firestore();
   const userRef = db.collection("users");
-  const [uid, setUid] = useState(); //儲存uid，要改成redux
-  const [user, setUser] = useState(); //儲存uid，要改成redux
-  // const [currentUserInfo, setCurrentUserInfo] = useState(); //儲存uid，要改成redux
-  const currentUserInfo = useSelector((state) => state.currentUserInfo);
+  const [uid, setUid] = useState();
+  const [user, setUser] = useState();
+  const [currentUserInfo, setCurrentUserInfo] = useState();
   const [collectionInfo, setCollectionInfo] = useState();
   const [favInfo, setFavInfo] = useState();
-
-  const [isLogin, setIsLogin] = useState();
-  const [isLoading, setIsLoading] = useState(true);
   const [searchDisplay, setSearchDisplay] = useState(false);
 
   useEffect(() => {
-    // 取得使用者資料為非同步
     firebase.auth().onAuthStateChanged((currentUser) => {
       setUser(currentUser);
       if (currentUser) {
         setUid(currentUser.uid);
-        setIsLogin(true);
         dispatch(getIsLogin(true));
       } else {
-        setIsLogin(false);
         dispatch(getIsLogin(false));
       }
     });
@@ -58,16 +51,19 @@ function App() {
     if (!user) {
       setUid(undefined);
       setFavInfo(undefined);
+      setCollectionInfo(undefined);
+      setCollectionInfo(undefined);
+      dispatch(getCurrentUserInfo(null));
     }
   }, [user]);
 
   useEffect(() => {
     uid &&
       userRef.doc(uid).onSnapshot((doc) => {
-        // setCurrentUserInfo(doc.data());
+        setCurrentUserInfo(doc.data());
         dispatch(getCurrentUserInfo(doc.data()));
       });
-  }, [uid, userRef, dispatch]);
+  }, [uid]);
 
   useEffect(() => {
     let isMounted = true;
@@ -75,7 +71,6 @@ function App() {
       currentUserInfo &&
         fetchCollectionMovies(currentUserInfo.my_list).then((movieInfo) => {
           setCollectionInfo(movieInfo);
-          setIsLoading(false);
         });
     }
     return () => {
@@ -90,7 +85,6 @@ function App() {
         fetchCollectionMovies(currentUserInfo.user_collection).then(
           (movieInfo) => {
             setFavInfo(movieInfo);
-            setIsLoading(false);
           }
         );
     }
@@ -103,7 +97,6 @@ function App() {
     <BrowserRouter>
       <ScrollToTop>
         <Navbar
-          user={user}
           searchDisplay={searchDisplay}
           setSearchDisplay={setSearchDisplay}
           favInfo={favInfo}
@@ -111,36 +104,24 @@ function App() {
 
         <Switch>
           <Route path="/" exact>
-            <Home user={user} uid={uid} collectionInfo={collectionInfo} />
+            <Home collectionInfo={collectionInfo} />
           </Route>
 
           <Route path="/login" exact>
-            {user !== null ? <Redirect to="/member" /> : <Login />}
+            {user ? <Redirect to="/member" /> : <Login />}
           </Route>
 
           <Route path="/member" exact>
-            {user !== null ? <Member uid={uid} /> : <Redirect to="/login" />}
+            {user ? <Member uid={uid} /> : <Redirect to="/login" />}
           </Route>
 
           <Route path="/myfav" exact>
-            {user !== null ? (
-              <MyFav
-                currentUserInfo={currentUserInfo}
-                favInfo={favInfo}
-                uid={uid}
-              />
-            ) : (
-              <Redirect to="/login" />
-            )}
+            {user ? <MyFav favInfo={favInfo} /> : <Redirect to="/login" />}
           </Route>
 
           <Route path="/mylist" exact>
-            {user !== null ? (
-              <MyList
-                currentUserInfo={currentUserInfo}
-                uid={uid}
-                collectionInfo={collectionInfo}
-              />
+            {user ? (
+              <MyList collectionInfo={collectionInfo} />
             ) : (
               <Redirect to="/login" />
             )}
@@ -151,7 +132,7 @@ function App() {
           </Route>
 
           <Route exact path="/movie/:id">
-            <MovieInfos uid={uid} />
+            <MovieInfos />
           </Route>
 
           <Route exact path="/movienotfound">
@@ -169,7 +150,6 @@ function App() {
 
         <Footer />
         <MobileNavbar
-          user={user}
           searchDisplay={searchDisplay}
           setSearchDisplay={setSearchDisplay}
         />

@@ -10,10 +10,12 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import AddToCollection from "../AddToCollection/AddToCollection";
 import { getRandomNewReleaseMovie } from "../../utils/api";
 import { swalLoginModal } from "../../utils/swalModal";
+import { useSelector } from "react-redux";
 
-function Navbar({ user, searchDisplay, setSearchDisplay, favInfo }) {
+function Navbar({ searchDisplay, setSearchDisplay, favInfo }) {
   const [searchInputValue, setSearchInputValue] = useState("");
   const [display, setDisplay] = useState("notdisplayed");
+  const isLogin = useSelector((state) => state.isLogin);
 
   const showButton = (e) => {
     e.preventDefault();
@@ -56,7 +58,7 @@ function Navbar({ user, searchDisplay, setSearchDisplay, favInfo }) {
   }
 
   function handleVisitMyFav() {
-    if (!user) {
+    if (!isLogin) {
       swalLoginModal("visit my favorites!");
     } else {
       history.push("/myfav");
@@ -83,7 +85,7 @@ function Navbar({ user, searchDisplay, setSearchDisplay, favInfo }) {
           Surprise me!
         </div>
 
-        {user ? (
+        {isLogin ? (
           <Link to="/mylist">
             <div className="mylist-link">My List</div>
           </Link>

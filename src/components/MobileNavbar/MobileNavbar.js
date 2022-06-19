@@ -5,9 +5,12 @@ import memberLogo from "../../images/memberLogo.png";
 import { Link } from "react-router-dom";
 import { swalLoginModal } from "../../utils/swalModal";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function MobileNavbar({ user, searchDisplay, setSearchDisplay }) {
+function MobileNavbar({ searchDisplay, setSearchDisplay }) {
   const history = useHistory();
+  const isLogin = useSelector((state) => state.isLogin);
+
   function handleSearchDisplay() {
     if (!searchDisplay) {
       setSearchDisplay(true);
@@ -17,7 +20,7 @@ function MobileNavbar({ user, searchDisplay, setSearchDisplay }) {
   }
 
   function handleVisitMyFav() {
-    if (!user) {
+    if (!isLogin) {
       swalLoginModal("visit my favorites!");
     } else {
       history.push("/myfav");

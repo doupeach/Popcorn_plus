@@ -2,41 +2,6 @@ import firebase from "./firebase"
 
 const firestore = firebase.firestore();
 
-// export const getCollectionsOnSnapshot = (collectionName, setContents) => {
-//   const unsub = firestore
-//     .collection(collectionName)
-//     .onSnapshot((collectionSnapshot) => {
-//       const data = collectionSnapshot.docs.map((docSnapshot) => {
-//         const id = docSnapshot.id;
-//         return { ...docSnapshot.data(), id };
-//       });
-//       setContents(data);
-//     });
-//   return unsub;
-// };
-
-// export const getCollectionsDescOrder = (
-//   collectionName,
-//   setContents,
-//   lastCollectionSnapshotRef
-// ) => {
-//   const unsub = firestore
-//     .collection(collectionName)
-//     .orderBy("createdAt", "desc")
-//     .limit(4)
-//     .onSnapshot((collectionSnapshot) => {
-//       const data = collectionSnapshot.docs.map((docSnapshot) => {
-//         const id = docSnapshot.id;
-//         return { ...docSnapshot.data(), id };
-//       });
-//       lastCollectionSnapshotRef.current =
-//         collectionSnapshot.docs[collectionSnapshot.docs.length - 1];
-//       setContents(data);
-//     });
-
-//   return unsub;
-// };
-
 export const getDocumentRef = (collectionName, id) => {
   return firestore.collection(collectionName).doc(id);
 };

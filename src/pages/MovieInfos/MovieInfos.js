@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./MovieInfos.css";
-import plusBtn from "../../images/plusBTN.png";
-import popcornBtn from "../../images/popcornBTN.png";
 import playBtn from "../../images/playBTN.png";
 import noCastPhoto from "../../images/cast-default-photo.png";
 import ModalVideo from "react-modal-video";
@@ -11,14 +9,17 @@ import AddToList from "../../components/AddToList/AddToList";
 import AddToCollection from "../../components/AddToCollection/AddToCollection";
 import Shares from "../../components/Shares/Shares";
 import Loading from "../../components/Loading/Loading";
+import { useSelector } from "react-redux";
 
-function MovieInfos({ uid }) {
+function MovieInfos() {
   const { id } = useParams();
   const [movieDetail, setMovieDetail] = useState();
   const [castInfo, setCastInfo] = useState();
   const history = useHistory();
   const [isOpen, setOpen] = useState(false);
   const [trailerKey, setTrailerKey] = useState();
+  const currentUserInfo = useSelector((state) => state.currentUserInfo);
+  const uid = currentUserInfo?.uid
 
   function getDirector() {
     let directorName = "";
@@ -156,7 +157,6 @@ function MovieInfos({ uid }) {
           </div>
           <ModalVideo
             channel="youtube"
-            // youtube={{ autoplay: 1, mute: 1 }}
             isOpen={isOpen}
             videoId={trailerKey}
             onClose={() => setOpen(false)}

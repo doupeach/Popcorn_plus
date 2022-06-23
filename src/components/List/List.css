@@ -1,0 +1,187 @@
+.list-container {
+  background-color: #000;
+  width: 100%;
+  overflow: hidden;
+  height: 420px;
+  padding: 30px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.list {
+  width: 100%;
+  height: 300px;
+  padding: 25px;
+  padding-bottom: 0px;
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: relative;
+}
+
+#list-name {
+  font-size: 28px;
+  color: white;
+}
+
+#card {
+  width: 380px;
+  position: relative;
+  display: block;
+  flex: 1 1 0px;
+  transition: transform 500ms;
+  border-radius: 10px;
+}
+
+/* hover effect */
+
+.list:hover #card {
+  transform: translateX(-10%);
+}
+
+#card:hover ~ #card {
+  transform: translateX(10%);
+}
+
+.list #card:hover {
+  transform: scale(1.25);
+  z-index: 1;
+}
+
+#hover-card {
+  display: none;
+  width: 300px;
+  margin: 0 10px;
+  box-sizing: border-box;
+  background-color: rgb(22, 21, 21);
+  border-radius: 10px;
+}
+
+#hover-btns {
+  display: flex;
+  align-items: center;
+  margin: 10px 5px 5px 5px;
+}
+
+.card-title {
+  color: white;
+  margin: 15px;
+}
+
+#plusBtn img,
+#plusBtn svg {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#popcornBtn img,
+#popcornBtn svg {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+#playBtn {
+  margin-left: auto;
+}
+
+#hover-card p,
+#hover-card h4 {
+  color: white;
+  font-size: 16px;
+  margin: 0px 10px 5px;
+}
+
+#card:hover #hover-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 5px 5px;
+}
+
+#card:hover .card-title {
+  display: none;
+}
+
+#card:hover #card-img {
+  border-radius: 5px 5px 0 0;
+}
+
+#card-img {
+  width: 300px;
+  margin: 0 10px;
+  cursor: pointer;
+  display: block;
+  border-radius: 5px;
+  max-height: 170px;
+  object-fit: cover;
+  object-position: center;
+}
+
+#bs-play {
+  cursor: pointer;
+}
+
+#bs-play-fill {
+  cursor: pointer;
+  display: none;
+}
+
+#bs-play:hover {
+  display: none;
+}
+
+#bs-play:hover + #bs-play-fill {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .list-container {
+    padding: 10px;
+    padding-top: 20px;
+    height: 350px;
+    margin-bottom: 50px;
+  }
+
+  .list {
+    padding: 10px;
+    padding-bottom: 0px;
+    margin-top: 15px;
+    height: 300px;
+  }
+
+  #list-name {
+    font-size: 22px;
+    margin-left: 10px;
+  }
+
+  .card-title {
+    display: none;
+  }
+
+  .list:hover #card {
+    transform: none;
+  }
+
+  #card:hover ~ #card {
+    transform: none;
+  }
+
+  .list #card:hover {
+    transform: none;
+    z-index: 1;
+  }
+
+  #hover-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 5px 5px;
+  }
+
+  #card-img {
+    border-radius: 5px 5px 0 0;
+  }
+}

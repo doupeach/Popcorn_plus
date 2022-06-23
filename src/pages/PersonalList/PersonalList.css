@@ -1,0 +1,154 @@
+.search-result-container {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.search-result {
+  width: 100%;
+  height: calc(100vh - 155px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+
+.search-card {
+  width: 220px;
+  margin: 15px;
+}
+
+.search-poster {
+  width: 170px;
+}
+
+.search-card:hover .search-poster {
+  transform: scale(1.1);
+  transition: transform 500ms ease-in;
+}
+
+.search-title {
+  margin: 15px 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+#query {
+  color: white;
+  font-size: 25px;
+  margin-top: 120px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.no-list-movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 155px);
+}
+
+.no-list-movie div {
+  display: block;
+  color: #cacaca;
+  font-size: 1.4rem;
+  word-break: break-word;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#noMovieInList {
+  margin-bottom: 30px;
+
+  @media (max-width: 600px) {
+    height: 135px;
+    width: 240px;
+  }
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.owner-photo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-left: 30px;
+}
+
+#owner {
+  color: white;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+#list-shares {
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  #query {
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+
+  .search-result-container {
+    margin: 20px 0px;
+  }
+}
+
+@media (max-width: 425px) {
+  #query {
+    font-size: 24px;
+    width: 80%;
+  }
+
+  .search-card {
+    width: 150px;
+    margin: 10px;
+  }
+
+  .search-poster {
+    width: 140px;
+  }
+
+  #list-shares {
+    margin-left: 20px;
+    position: absolute;
+    left: 36%;
+  }
+  #list-shares div {
+    width: 140px;
+    margin-top: 0px;
+    margin-left: 20px;
+    top: 0;
+  }
+  #list-shares svg:last-child {
+    margin-top: 0px;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  #list-shares {
+    left: 25%;
+  }
+
+  #list-shares div {
+    width: 140px;
+    margin-top: 0px;
+    margin-left: 30px;
+  }
+
+  #list-shares svg:last-child {
+    margin-top: 0px;
+    margin-left: 20px;
+  }
+}

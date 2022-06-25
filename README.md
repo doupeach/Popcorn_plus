@@ -14,7 +14,7 @@
   Enable user to watch trailers without visiting other websites.
 
 - #### New Releases & Upcoming & Trailer
-    ![New Releases & Upcoming & Trailer](https://imgur.com/LfgZspg.gif)
+    ![New Releases & Upcoming & Trailer](https://i.imgur.com/LfgZspg.gif)
 - #### Search Movie
 ![Search Movie](https://imgur.com/t1f43zg.gifv)
 - #### Random Movie

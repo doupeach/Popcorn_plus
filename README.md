@@ -14,9 +14,9 @@
   Enable user to watch trailers without visiting other websites.
 
 - #### New Releases & Upcoming & Trailer
-![New Releases & Upcoming & Trailer](https://imgur.com/LfgZspg)
+![New Releases & Upcoming & Trailer](https://imgur.com/LfgZspg.gifv)
 - #### Search Movie
-![Search Movie](https://i.imgur.com/t1f43zg.gifv)
+![Search Movie](https://imgur.com/t1f43zg.gifv)
 - #### Random Movie
 ![Random Movie](https://i.imgur.com/RtPk10p.gifv)
 
@@ -32,7 +32,7 @@
 
 - Sharing feature:
   User could share movies or their created personal lists via facebook/Line.
-  
+
 - #### Share movie/list
 ![Share movie/list](https://i.imgur.com/h2BPldb.gifv)
 

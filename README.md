@@ -14,27 +14,27 @@
   Enable user to watch trailers without visiting other websites.
 
 - #### New Releases & Upcoming & Trailer
-    ![New Releases & Upcoming & Trailer](https://i.imgur.com/LfgZspg.gif)
+![New Releases & Upcoming & Trailer](https://i.imgur.com/4tjM0T3.gif)
 - #### Search Movie
-![Search Movie](https://imgur.com/t1f43zg.gifv)
+![Search Movie](https://i.imgur.com/Qn09G0C.gif)
 - #### Random Movie
-![Random Movie](https://i.imgur.com/RtPk10p.gifv)
+![Random Movie](https://i.imgur.com/sbCgmR1.gif)
 
 - Personal movie lists:
   User could create personal movie lists, sharing created lists or a movie on social media.
 
 - #### Add to list/favorite
-![Add to list/favorite](https://i.imgur.com/rfL6S6B.gifv)
+![Add to list/favorite](https://i.imgur.com/4g0GrE9.gif)
 - #### Create personal list & add movie
-![Create personal list & add movie](https://i.imgur.com/o0UFymh.gifv)
+![Create personal list & add movie](https://i.imgur.com/0GMX938.gif)
 - #### Remove movie & delete list
-![Remove movie and delete list](https://i.imgur.com/6M9sekK.gifv)
+![Remove movie and delete list](https://i.imgur.com/djLRxnY.gif)
 
 - Sharing feature:
   User could share movies or their created personal lists via facebook/Line.
 
 - #### Share movie/list
-![Share movie/list](https://i.imgur.com/h2BPldb.gifv)
+![Share movie/list](https://i.imgur.com/oCiG60z.gif)
 
 ## Website link
 

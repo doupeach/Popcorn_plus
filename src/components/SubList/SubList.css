@@ -1,0 +1,84 @@
+#delete-list-btn {
+  cursor: pointer;
+}
+
+#delete-list-btn:hover,
+.editList:hover,.mylist-card:hover {
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+}
+
+#mylist-name {
+  margin-right: 30px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.sub-mylist-name:hover {
+  text-shadow: 2px 2px 2px white;
+}
+
+.plusList-wrap {
+  position: relative;
+  min-width: 170px;
+  height: 255px;
+  border: 1px solid #cacaca;
+  background: rgb(22, 21, 21);
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.plusList-wrap:hover {
+  border: 1px solid white;
+  background: rgb(15, 15, 15);
+}
+
+.plusList {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+}
+
+.editList {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+#list-wrap {
+  padding-left: 20px;
+  display: flex;
+  overflow-x: scroll;
+}
+
+@media (max-width: 425px) {
+  #mylist-name {
+    font-size: 20px;
+    margin-right: 0px;
+  }
+
+  #delete-list-btn {
+    margin-top: 55px;
+  }
+
+  #mobile-mylist-new-list .editList {
+    margin-top: 55px;
+    margin-left: 35px;
+  }
+
+  #mobile-mylist-new-list a {
+    width: 300px;
+    overflow-x: scroll;
+  }
+  #list-wrap {
+    padding-left: 0px;
+  }
+
+  .mylist-container {
+    padding: 30px;
+  }
+}

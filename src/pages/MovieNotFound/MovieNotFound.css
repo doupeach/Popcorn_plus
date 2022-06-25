@@ -1,0 +1,29 @@
+.movie-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 155px);
+  line-height: 28px;
+  padding: 5%;
+  word-break: break-word;
+  white-space: break-spaces;
+}
+
+.movie-not-found div {
+  display: block;
+  color: #cacaca;
+  font-size: 1.4rem;
+  word-break: break-word;
+}
+
+#notFoundimg {
+  margin-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+  #notFoundimg {
+    height: 135px;
+    width: 240px;
+  }
+}

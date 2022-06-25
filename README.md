@@ -32,6 +32,7 @@
 
 - Sharing feature:
   User could share movies or their created personal lists via facebook/Line.
+  
 - #### Share movie/list
 ![Share movie/list](https://i.imgur.com/h2BPldb.gifv)
 

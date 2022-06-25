@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+<h1 align='center'>Popcorn+</h1>
+<div align='center'><a href='https://popcorn-plus.web.app/'><img width='120px' src='src/images/Popcorn_logo.png'/></a></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Introduction
 
-## Available Scripts
+- Popcorn+ provides information of new releases and upcoming movies, user could watch trailers and search movies by title and create personal movie lists, also sharing your list or just any movie you found via facebook/Line.
+- Popcorn+ is your best movie pal!
 
-In the project directory, you can run:
+# Features
 
-### `npm start`
+- To browse movies information:
+  Fetch data from The Movie Database (TMDB), provides information of new releases and upcoming movies, and also enable keyword search with movie title.
+- To watch trailers:
+  Enable user to watch trailers without visiting other websites.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- #### New Releases & Upcoming & Trailer
+![New Releases & Upcoming & Trailer](https://imgur.com/LfgZspg)
+- #### Search Movie
+![Search Movie](https://i.imgur.com/t1f43zg.gifv)
+- #### Random Movie
+![Random Movie](https://i.imgur.com/RtPk10p.gifv)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Personal movie lists:
+  User could create personal movie lists, sharing created lists or a movie on social media.
 
-### `npm test`
+- #### Add to list/favorite
+![Add to list/favorite](https://i.imgur.com/rfL6S6B.gifv)
+- #### Create personal list & add movie
+![Create personal list & add movie](https://i.imgur.com/o0UFymh.gifv)
+- #### Remove movie & delete list
+![Remove movie and delete list](https://i.imgur.com/6M9sekK.gifv)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Sharing feature:
+  User could share movies or their created personal lists via facebook/Line.
+- #### Share movie/list
+![Share movie/list](https://i.imgur.com/h2BPldb.gifv)
 
-### `npm run build`
+## Website link
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Popcorn+ website Link [Click here](https://popcorn-plus.web.app/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- You could sign up with email or Google account.
+- Or login with Google account directly.
+- Test Account:
+  - User: test@email.com
+  - Password: test123
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Techniques
 
-### `npm run eject`
+### Front-End
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- ReactJS/ Redux/ React Router
+- Styled-components
+- Firebase
+  - Authentication
+  - Firestore Database
+  - Storage
+  - Hosting
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Miscellaneous
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- dotenv
+- react-icons
+- react-share
+- sweetalert2
+- react-loading
+- reactjs-popup
+- react-modal-video
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Future features
 
-## Learn More
+- Movie in lists could drag and drop to modify order.
+- Could use calender to find out what movies are released on specific date.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Author: Angie Lu
+- E-mail: doupeach0729@gmail.com

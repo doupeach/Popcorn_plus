@@ -3,15 +3,21 @@
 
 # Introduction
 
-- Popcorn+ provides information of new releases and upcoming movies, user could watch trailers and search movies by title and create personal movie lists, also sharing your list or just any movie you found via facebook/Line.
-- Popcorn+ is your best movie pal!
+- Popcorn+ provides information of new releases and upcoming movies, user could
+watch trailers and search movies with title.
+- User could create personal movie lists, and share list or movie via facebook/Line.
+
+
 
 # Features
 
-- To browse movies information:
-  Fetch data from The Movie Database (TMDB), provides information of new releases and upcoming movies, and also enable keyword search with movie title.
-- To watch trailers:
-  Enable user to watch trailers without visiting other websites.
+- To browse movies information: Fetch data from The Movie Database (TMDB),
+provides information of new releases and upcoming movies, and also enable
+keyword search with movie title.
+- To watch trailers: Enable user to watch trailers without visiting other websites by using react-modal-video through trailer link fetched from TMDB.
+- Personal movie lists: User could create personal movie lists and the list page
+would update in real-time by connecting firebase onSnapshot.
+- Sharing feature: User could share movies or created personal lists via facebook/Line by using react-share to connect social media service.
 
 - #### New Releases & Upcoming & Trailer
 ![New Releases & Upcoming & Trailer](https://i.imgur.com/lm0W2oF.gif)

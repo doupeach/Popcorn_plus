@@ -1,24 +1,25 @@
-import { useEffect, useState } from "react";
-import "./List.css";
-import plusBtn from "../../images/plusBTN.png";
-import AddToList from "../AddToList/AddToList";
-import popcornBtn from "../../images/popcornBTN.png";
-import AddToCollection from "../AddToCollection/AddToCollection";
-import playBtn from "../../images/playBTN.png";
-import { BsPlayCircle, BsPlayCircleFill } from "react-icons/bs";
-import ModalVideo from "react-modal-video";
-import { fetchMovie } from "../../utils/api";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import './List.css';
+import plusBtn from '../../images/plusBTN.png';
+import AddToList from '../AddToList/AddToList';
+import popcornBtn from '../../images/popcornBTN.png';
+import AddToCollection from '../AddToCollection/AddToCollection';
+import playBtn from '../../images/playBTN.png';
+import { BsPlayCircle, BsPlayCircleFill } from 'react-icons/bs';
+import ModalVideo from 'react-modal-video';
+import { fetchMovie } from '../../utils/api';
+import { Link } from 'react-router-dom';
+import { roundToOneDecimal } from '../../utils/helper';
 
 function List({ listGenre, listData, collectionInfo, uid }) {
   const [isOpen, setOpen] = useState(false);
-  const [trailerKey, setTrailerKey] = useState("L61p2uyiMSo");
+  const [trailerKey, setTrailerKey] = useState('L61p2uyiMSo');
   const [dataArr, setDataArr] = useState();
 
   const handleClickPlay = (id) => {
     setOpen(true);
     fetchMovie(id).then((res) => {
-      setTrailerKey(res.videos.results[0]?.key || "L61p2uyiMSo");
+      setTrailerKey(res.videos.results[0]?.key || 'L61p2uyiMSo');
     });
   };
 
@@ -60,10 +61,10 @@ function List({ listGenre, listData, collectionInfo, uid }) {
                     />
                   </div>
                   <div id="playBtn" onClick={() => handleClickPlay(data.id)}>
-                    <BsPlayCircle color={"#FFF"} size={"30px"} id="bs-play" />
+                    <BsPlayCircle color={'#FFF'} size={'30px'} id="bs-play" />
                     <BsPlayCircleFill
-                      color={"#FFF"}
-                      size={"32.5px"}
+                      color={'#FFF'}
+                      size={'32.5px'}
                       id="bs-play-fill"
                     />
                   </div>
@@ -72,7 +73,7 @@ function List({ listGenre, listData, collectionInfo, uid }) {
                   <p>{data.title}</p>
                 </Link>
 
-                <h4>{data.vote_average}</h4>
+                <h4>{roundToOneDecimal(data.vote_average)}</h4>
               </div>
             </div>
           </div>

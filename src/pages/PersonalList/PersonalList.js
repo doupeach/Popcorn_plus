@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import "./PersonalList.css";
-import { Link, useParams } from "react-router-dom";
-import noCastPhoto from "../../images/cast-default-photo.png";
-import Loading from "../../components/Loading/Loading";
-import { getDocumentRef } from "../../utils/firebaseActions";
-import { fetchCollectionMovies } from "../../utils/api";
-import Shares from "../../components/Shares/Shares";
+import React, { useState, useEffect } from 'react';
+import './PersonalList.css';
+import { Link, useParams } from 'react-router-dom';
+import noCastPhoto from '../../images/cast-default-photo.png';
+import Loading from '../../components/Loading/Loading';
+import { getDocumentRef } from '../../utils/firebaseActions';
+import { fetchCollectionMovies } from '../../utils/api';
+import Shares from '../../components/Shares/Shares';
+import { roundToOneDecimal } from '../../utils/helper';
 
 function PersonalList() {
   const { id } = useParams();
@@ -15,7 +16,7 @@ function PersonalList() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getDocumentRef("lists", id).onSnapshot((doc) => {
+    getDocumentRef('lists', id).onSnapshot((doc) => {
       setLists(doc.data());
     });
   }, []);
@@ -26,7 +27,7 @@ function PersonalList() {
         setListData(movies);
         setIsLoading(false);
       });
-      getDocumentRef("users", lists.owner)
+      getDocumentRef('users', lists.owner)
         .get()
         .then((doc) => {
           setOwner(doc.data());
@@ -67,7 +68,7 @@ function PersonalList() {
                           {result.original_title}
                         </div>
                         <div className="search-rating">
-                          {result.vote_average}
+                          {roundToOneDecimal(result.vote_average)}
                         </div>
                       </div>
                     </Link>

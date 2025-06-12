@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import "./MyFav.css";
-import { Link } from "react-router-dom";
-import noCastPhoto from "../../images/cast-default-photo.png";
-import Loading from "../../components/Loading/Loading";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import './MyFav.css';
+import { Link } from 'react-router-dom';
+import noCastPhoto from '../../images/cast-default-photo.png';
+import Loading from '../../components/Loading/Loading';
+import { useSelector } from 'react-redux';
+import { roundToOneDecimal } from '../../utils/helper';
 
 function MyFav({ favInfo }) {
   const [favs, setFavs] = useState(favInfo);
@@ -43,7 +44,7 @@ function MyFav({ favInfo }) {
                             {result.original_title}
                           </div>
                           <div className="myfav-rating">
-                            {result.vote_average}
+                            {roundToOneDecimal(result.vote_average)}
                           </div>
                         </div>
                       </Link>

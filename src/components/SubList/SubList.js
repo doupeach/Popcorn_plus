@@ -1,21 +1,22 @@
-import { useMemo } from "react";
-import { Link, useLocation } from "react-router-dom";
-import Swal from "sweetalert2";
-import Popup from "reactjs-popup";
-import "./SubList.css";
-import { RiDeleteBin2Fill, RiEdit2Line } from "react-icons/ri";
-import { BiEdit } from "react-icons/bi";
-import { deleteDoc } from "../../utils/firebaseActions";
-import plusLogo from "../../images/plusBTN.png";
-import AddFromListModal from "../AddFromListModal/AddFromListModal";
+import { useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import Popup from 'reactjs-popup';
+import './SubList.css';
+import { RiDeleteBin2Fill, RiEdit2Line } from 'react-icons/ri';
+import { BiEdit } from 'react-icons/bi';
+import { deleteDoc } from '../../utils/firebaseActions';
+import plusLogo from '../../images/plusBTN.png';
+import AddFromListModal from '../AddFromListModal/AddFromListModal';
+import { roundToOneDecimal } from '../../utils/helper';
 
 const contentStyle = {
-  background: "rgb(22, 21, 21)",
-  border: "1px solid rgb(22, 21, 21)",
-  padding: "0",
+  background: 'rgb(22, 21, 21)',
+  border: '1px solid rgb(22, 21, 21)',
+  padding: '0',
 };
-const overlayStyle = { background: "rgba(0,0,0,0.5)" };
-const arrowStyle = { color: "#000" }; // style for an svg element
+const overlayStyle = { background: 'rgba(0,0,0,0.5)' };
+const arrowStyle = { color: '#000' }; // style for an svg element
 
 function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
   const results = useMemo(() => {
@@ -32,25 +33,25 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
 
   function handleDeleteList(id) {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#2f4861",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#2f4861',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
       background:
-        "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
+        'radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )',
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteDoc("lists", id);
+        deleteDoc('lists', id);
         Swal.fire({
-          title: "Deleted!",
-          icon: "success",
+          title: 'Deleted!',
+          icon: 'success',
           button: false,
           timer: 1500,
           background:
-            "radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )",
+            'radial-gradient( farthest-side at 73% 21%, transparent, rgb(26,29,41) )',
         });
       }
     });
@@ -66,13 +67,15 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
                 to={{ pathname: `/movielist/${data.id}`, state: { data } }}
                 key={data.id}
               >
-                <h2 id="mylist-name" className="sub-mylist-name">{data.name}</h2>
+                <h2 id="mylist-name" className="sub-mylist-name">
+                  {data.name}
+                </h2>
               </Link>
 
               <RiDeleteBin2Fill
                 id="delete-list-btn"
-                color={"white"}
-                size={"25px"}
+                color={'white'}
+                size={'25px'}
                 onClick={() => handleDeleteList(data.id)}
               />
               {data.data.length && (
@@ -80,8 +83,8 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
                   trigger={
                     <BiEdit
                       className="editList"
-                      color={"white"}
-                      size={"25px"}
+                      color={'white'}
+                      size={'25px'}
                     />
                   }
                   modal
@@ -155,7 +158,7 @@ function SubList({ listsData = {}, noCastPhoto, uid, collectionInfo }) {
                             {result.original_title}
                           </div>
                           <div className="mylist-rating">
-                            {result.vote_average}
+                            {roundToOneDecimal(result.vote_average)}
                           </div>
                         </div>
                       </Link>

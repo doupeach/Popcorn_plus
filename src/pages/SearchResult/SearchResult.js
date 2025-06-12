@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import "./SearchResult.css";
-import { Link, useParams } from "react-router-dom";
-import { fetchSearch } from "../../utils/api";
-import noCastPhoto from "../../images/cast-default-photo.png";
-import Loading from "../../components/Loading/Loading";
+import React, { useState, useEffect } from 'react';
+import './SearchResult.css';
+import { Link, useParams } from 'react-router-dom';
+import { fetchSearch } from '../../utils/api';
+import noCastPhoto from '../../images/cast-default-photo.png';
+import Loading from '../../components/Loading/Loading';
+import { roundToOneDecimal } from '../../utils/helper';
 
 function SearchResult() {
   const { query } = useParams();
@@ -46,7 +47,7 @@ function SearchResult() {
                           {result.original_title}
                         </div>
                         <div className="search-rating">
-                          {result.vote_average}
+                          {roundToOneDecimal(result.vote_average)}
                         </div>
                       </div>
                     </Link>

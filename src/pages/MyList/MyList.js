@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
-import "./MyList.css";
-import { Link } from "react-router-dom";
-import { fetchCollectionMovies } from "../../utils/api";
-import { getMyCollections } from "../../utils/firebaseActions";
-import Popup from "reactjs-popup";
-import { GrChapterAdd } from "react-icons/gr";
-import { BiAddToQueue } from "react-icons/bi";
-import Loading from "../../components/Loading/Loading";
-import noCastPhoto from "../../images/cast-default-photo.png";
-import NewListModal from "../../components/NewListModal/NewListModal";
-import SubList from "../../components/SubList/SubList";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import './MyList.css';
+import { Link } from 'react-router-dom';
+import { fetchCollectionMovies } from '../../utils/api';
+import { getMyCollections } from '../../utils/firebaseActions';
+import Popup from 'reactjs-popup';
+import { GrChapterAdd } from 'react-icons/gr';
+import { BiAddToQueue } from 'react-icons/bi';
+import Loading from '../../components/Loading/Loading';
+import noCastPhoto from '../../images/cast-default-photo.png';
+import NewListModal from '../../components/NewListModal/NewListModal';
+import SubList from '../../components/SubList/SubList';
+import { useSelector } from 'react-redux';
+import { roundToOneDecimal } from '../../utils/helper';
 
 const contentStyle = {
-  background: "rgb(22, 21, 21)",
-  border: "1px solid rgb(22, 21, 21)",
-  padding: "0",
+  background: 'rgb(22, 21, 21)',
+  border: '1px solid rgb(22, 21, 21)',
+  padding: '0',
 };
-const overlayStyle = { background: "rgba(0,0,0,0.5)" };
-const arrowStyle = { color: "#000" }; // style for an svg element
+const overlayStyle = { background: 'rgba(0,0,0,0.5)' };
+const arrowStyle = { color: '#000' }; // style for an svg element
 
 function MyList({ collectionInfo }) {
   const [collections, setCollections] = useState(collectionInfo);
@@ -34,7 +35,7 @@ function MyList({ collectionInfo }) {
 
   useEffect(() => {
     if (currentUserInfo?.uid) {
-      const unsub = getMyCollections("lists", currentUserInfo.uid, setLists);
+      const unsub = getMyCollections('lists', currentUserInfo.uid, setLists);
       return unsub;
     }
   }, [currentUserInfo]);
@@ -71,8 +72,8 @@ function MyList({ collectionInfo }) {
                   trigger={
                     <BiAddToQueue
                       id="new-list-btn"
-                      color={"white"}
-                      size={"35px"}
+                      color={'white'}
+                      size={'35px'}
                     />
                   }
                   modal
@@ -116,7 +117,7 @@ function MyList({ collectionInfo }) {
                             {result.original_title}
                           </div>
                           <div className="mylist-rating">
-                            {result.vote_average}
+                            {roundToOneDecimal(result.vote_average)}
                           </div>
                         </div>
                       </Link>
